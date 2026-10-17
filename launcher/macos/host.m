@@ -34,14 +34,14 @@
   self.window.title=@"Fumo Racing · 安装与启动";[self.window center];
   NSMenu *menu=[NSMenu new];NSMenuItem *appMenu=[NSMenuItem new];[menu addItem:appMenu];NSMenu *items=[NSMenu new];
   [items addItemWithTitle:@"退出启动工具" action:@selector(terminate:) keyEquivalent:@"q"];appMenu.submenu=items;NSApp.mainMenu=menu;
-  self.heading=[self label:@"准备你的游戏" size:26 color:NSColor.labelColor];self.heading.font=[NSFont systemFontOfSize:26 weight:NSFontWeightSemibold];
-  NSTextField *intro=[self label:@"导入你已拥有的原版游戏，在本机生成可玩的游戏。\n原版文件不会上传，也不会被修改。" size:13 color:NSColor.secondaryLabelColor];
+  self.heading=[self label:@"导入原版游戏" size:26 color:NSColor.labelColor];self.heading.font=[NSFont systemFontOfSize:26 weight:NSFontWeightSemibold];
+  NSTextField *intro=[self label:@"选择 Touhou Fumo Racing 0.2.1 的 ZIP 压缩包或已解压文件夹。\n首次导入完成后，即可开始游戏。" size:13 color:NSColor.secondaryLabelColor];
   self.status=[self label:@"正在打开安装工具…" size:14 color:NSColor.labelColor];
   self.error=[self label:@"" size:13 color:NSColor.systemRedColor];self.error.hidden=YES;self.error.maximumNumberOfLines=3;self.error.lineBreakMode=NSLineBreakByTruncatingTail;
   self.progress=[NSProgressIndicator new];self.progress.style=NSProgressIndicatorStyleBar;self.progress.indeterminate=YES;
   self.progress.minValue=0;self.progress.maxValue=1;self.progress.hidden=YES;
-  self.zipButton=[self button:@"导入原版 ZIP" action:@selector(selectZip:)];self.zipButton.enabled=NO;
-  self.folderButton=[self button:@"导入原版文件夹" action:@selector(selectFolder:)];self.folderButton.enabled=NO;
+  self.zipButton=[self button:@"选择原版 ZIP" action:@selector(selectZip:)];self.zipButton.enabled=NO;
+  self.folderButton=[self button:@"选择原版文件夹" action:@selector(selectFolder:)];self.folderButton.enabled=NO;
   self.launchButton=[self button:@"开始游戏" action:@selector(launchGame:)];self.launchButton.hidden=YES;
   NSStackView *stack=[NSStackView stackViewWithViews:@[self.heading,intro,self.status,self.progress,self.zipButton,self.folderButton,self.launchButton,self.error]];
   stack.orientation=NSUserInterfaceLayoutOrientationVertical;stack.alignment=NSLayoutAttributeLeading;stack.spacing=15;stack.translatesAutoresizingMaskIntoConstraints=NO;
@@ -80,7 +80,7 @@
     dispatch_async(dispatch_get_main_queue(),^{LauncherHost *host=weak;if(!host)return;host.polling=NO;
       if(![state isKindOfClass:NSDictionary.class]){[host showError:@"无法连接安装工具，请关闭后重新打开。"];return;}
       BOOL busy=[state[@"busy"] boolValue],ready=[state[@"canLaunch"] boolValue];
-      host.heading.stringValue=ready?@"游戏已准备好":busy?@"正在准备游戏":@"准备你的游戏";
+      host.heading.stringValue=ready?@"游戏已安装":busy?@"正在导入原版游戏":@"导入原版游戏";
       host.status.stringValue=[state[@"message"] isKindOfClass:NSString.class]?state[@"message"]:@"";
       host.zipButton.hidden=ready;host.folderButton.hidden=ready;host.launchButton.hidden=!ready;
       host.zipButton.enabled=!busy&&!host.requesting;host.folderButton.enabled=!busy&&!host.requesting;host.launchButton.enabled=!busy&&!host.requesting;
@@ -105,8 +105,8 @@
 }
 - (void)chooseDirectory:(BOOL)directory {
   NSOpenPanel *panel=[NSOpenPanel openPanel];panel.canChooseDirectories=directory;panel.canChooseFiles=!directory;panel.allowsMultipleSelection=NO;
-  panel.prompt=@"导入";panel.message=directory?@"选择已解压的原版游戏文件夹":@"选择你已拥有的原版游戏 ZIP 压缩包";
-  if(!directory)panel.allowedContentTypes=@[UTTypeZIPArchive];
+  panel.prompt=@"导入";panel.message=directory?@"选择 Touhou Fumo Racing 0.2.1 的已解压文件夹":@"选择 Touhou Fumo Racing 0.2.1 的 ZIP 压缩包";
+  if(!directory)panel.allowedContentTypes=@[UTTypeZIP];
   __weak LauncherHost *weak=self;
   [panel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse response){if(response==NSModalResponseOK)[weak post:@"/api/install" body:@{@"sourcePath":panel.URL.path}];}];
 }

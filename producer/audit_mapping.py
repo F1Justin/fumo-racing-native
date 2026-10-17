@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter, defaultdict
 import json
+import hashlib
 from pathlib import Path
 import sys
 
@@ -25,6 +26,8 @@ def audit(original: Path, reference: Path, project: Path, output: Path, *, ffmpe
     index = SourceObjectIndex(store)
     asset_index = json.loads((reference / "source-asset-index.json").read_text())["assets"]
     path_by_lower = {asset["path"].casefold(): asset["path"] for asset in asset_index}
+    input_hashes = {asset["path"]: asset["sha256"] for asset in asset_index}
+    verified_paths = set()
     by_object = defaultdict(set)
     for asset in asset_index:
         for obj in asset["objects"]:
@@ -57,6 +60,12 @@ def audit(original: Path, reference: Path, project: Path, output: Path, *, ffmpe
                     if source_path is not None and not source_path.is_file():
                         source_path = None
                     try:
+                        if source_path is not None and asset_path not in verified_paths:
+                            with source_path.open("rb") as source_file:
+                                actual_hash = hashlib.file_digest(source_file, "sha256").hexdigest()
+                            if actual_hash != input_hashes[asset_path]:
+                                raise ValueError("Private exported input changed after reference build")
+                            verified_paths.add(asset_path)
                         result = index.match(target, exported_asset=source_path, audio_ffmpeg=ffmpeg).as_dict()
                     except Exception as exc:
                         result = {"status": "error", "type_name": typ, "name": name_of(target),

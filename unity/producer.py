@@ -40,6 +40,12 @@ def input_hashes(project):
             for p in (project / folder).rglob('*') if p.is_file()}
 
 
+def source_inventory(project):
+    return [{'path': str(p.relative_to(project)), 'sha256': sha(p)}
+            for p in sorted((project / 'Assets').rglob('*'))
+            if p.is_file() and p.suffix in KEEP and '/Editor/' not in p.as_posix()]
+
+
 def copy_overlay(project):
     manifest_path = project / 'Packages/manifest.json'
     manifest = json.loads(manifest_path.read_text())
@@ -58,6 +64,15 @@ def copy_overlay(project):
         # Apply to prepared workspaces as well, including the existing route
         # switching test's availability check before its ChangeTrack call.
         race.write_text(race.read_text().replace('Application.CanStreamedLevelBeLoaded(', 'NativeContent.CanLoadScene('))
+    diagnostic = project / 'Assets/Scripts/NativePlayable/NativeRaceLocalSelection.cs'
+    if diagnostic.exists():
+        text = diagnostic.read_text()
+        old = 'keyboard.MakeCurrent();device=keyboard;'
+        new = 'InputSystem.EnableDevice(keyboard);keyboard.MakeCurrent();device=keyboard;'
+        if new not in text:
+            if text.count(old) != 1:
+                raise ValueError('Diagnostic-only synthetic keyboard enable patch no longer matches')
+            diagnostic.write_text(text.replace(old, new))
     for folder in ('Runtime', 'Editor'):
         for source in sorted((HERE / folder).glob('*.cs')):
             destination = project / 'Assets' / ('Scripts/NativePlayable' if folder == 'Runtime' else 'Editor') / source.name
@@ -132,7 +147,6 @@ def prepare(output, platform, version):
     for folder in ('Packages', 'ProjectSettings', 'Library'):
         if (SOURCE / folder).exists():
             clone(SOURCE / folder, shell / folder)
-    kept = []
     for source in sorted((content / 'Assets').rglob('*')):
         if not source.is_file() or source.suffix.lower() not in KEEP or '/Editor/' in source.as_posix():
             continue
@@ -145,7 +159,6 @@ def prepare(output, platform, version):
         meta = source.with_suffix(source.suffix + '.meta')
         if meta.exists():
             shutil.copyfile(meta, target.with_suffix(target.suffix + '.meta'))
-        kept.append({'path': str(relative), 'sha256': sha(target)})
     copy_overlay(shell)
     (shell / 'Assets/link.xml').write_text('<linker>\n  <assembly fullname="Assembly-CSharp" preserve="all"/>\n'
                                            '  <assembly fullname="Unity.TextMeshPro" preserve="all"/>\n</linker>\n')
@@ -154,7 +167,7 @@ def prepare(output, platform, version):
                'editor': str(EDITOR), 'version': version,
                'workspace': str(workspace), 'contentProject': str(content), 'shellProject': str(shell),
                'privateReference': str(output / 'private-reference'), 'publicPlayer': str(output / 'public-player'),
-               'runtimePatch': patch, 'shellSourceFiles': kept,
+               'runtimePatch': dict(patch, syntheticDiagnosticKeyboardEnable=True), 'shellSourceFiles': source_inventory(shell),
                'limits': ['Reference bundles contain original content and MUST remain local.',
                           'Loading these bundles does not verify original-package import or content reconstruction.',
                           'Code/shader redistribution provenance and platform signing are separate release checks.']}
@@ -179,6 +192,11 @@ def run(output, receipt, step):
         copy_overlay(project)
         if label == 'player':
             sanitize_shell(project)
+            receipt['shellSourceFiles'] = source_inventory(project)
+            receipt['runtimePatch']['syntheticDiagnosticKeyboardEnable'] = True
+            receipt['runtimePatch']['sceneCheckReplacements'] = (project / 'Assets/Scripts/NativePlayable/NativeRace.cs').read_text().count('NativeContent.CanLoadScene(')
+            receipt['shaderReplacements'] = [{'path': path, 'source': filename, 'sha256': sha(HERE / 'Shaders' / filename)}
+                                             for path, filename in SHADER_REPLACEMENTS.items()]
         logfile = output / (label + '-build.log')
         args = [str(editor), '-batchmode', '-quit', '-buildTarget', target, '-projectPath', str(project),
                 '-executeMethod', 'NativeContentBuild.' + method, '-logFile', str(logfile)]

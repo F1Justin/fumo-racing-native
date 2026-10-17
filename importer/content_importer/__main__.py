@@ -29,11 +29,12 @@ def main():
         emit(result)
         return 0
     except ImportFailure as exc:
-        emit({"type": "error", "message": str(exc)})
+        print("IMPORT_FAILED " + str(exc), file=sys.stderr, flush=True)
+        emit({"type": "error", "message": exc.public_message})
         return 2
     except Exception:
         traceback.print_exc(file=sys.stderr)
-        emit({"type": "error", "message": "导入未完成，现有安装已保留。请保留日志以便排查。"})
+        emit({"type": "error", "message": "导入未完成。请重试；若仍失败，请保留日志并反馈。"})
         return 1
 
 

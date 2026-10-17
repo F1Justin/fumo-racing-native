@@ -10,7 +10,7 @@ from copy import deepcopy
 import math
 import struct
 
-from .files import ImportFailure
+from .files import InvalidPackage as ImportFailure
 from .unity_codecs import _empty_lod_info
 
 
@@ -37,7 +37,7 @@ def decode_mesh(reader):
     channels = mesh.m_VertexData.m_Channels or []
     for channel, name in [(0, "m_Vertices"), (1, "m_Normals"), (2, "m_Tangents"), (3, "m_Colors")]:
         values = getattr(handler, name)
-        if not values or channel >= len(channels):
+        if not values or channel >= len(channels) or not channels[channel].dimension:
             continue
         form = channels[channel].format
         if form in (2, 3, 4, 5):
@@ -77,7 +77,7 @@ def _empty_compressed():
 def generate_grass(source, schema, vertices, bounds_padding, *, decoded=None):
     """Return a complete Unity Mesh body using only source geometry and our code.
 
-    `schema` supplies root field names, m_Name and optional m_IsReadable. Every
+    `schema` supplies root field names, m_Name and optional readable/keep flags. Every
     other field is generated here; no target field is copied as a fallback.
     """
     mesh = decoded if decoded is not None else decode_mesh(source)
@@ -118,7 +118,8 @@ def generate_grass(source, schema, vertices, bounds_padding, *, decoded=None):
         "m_BindPose": [], "m_BoneNameHashes": [], "m_RootBoneNameHash": 0, "m_BonesAABB": [],
         "m_VariableBoneCountWeights": {"m_Data": []}, "m_MeshCompression": 0,
         "m_IsReadable": schema.get("m_IsReadable", True) is not False,
-        "m_KeepVertices": False, "m_KeepIndices": False, "m_IndexFormat": index_format,
+        "m_KeepVertices": schema.get("m_KeepVertices") is True,
+        "m_KeepIndices": schema.get("m_KeepIndices") is True, "m_IndexFormat": index_format,
         "m_IndexBuffer": index_data, "m_VertexData": {"m_VertexCount": total, "m_Channels": channels, "m_DataSize": vertex_data},
         "m_CompressedMesh": _empty_compressed(), "m_LocalAABB": bounds(positions, f32(bounds_padding)),
         "m_MeshUsageFlags": 0, "m_CookingOptions": 30,

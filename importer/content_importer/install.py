@@ -7,7 +7,7 @@ from pathlib import Path
 import shutil
 import tempfile
 
-from .files import ImportFailure, InstallLock, extract_zip, inside, locate_data, relative_name, snapshot_original
+from .files import ImportFailure, InvalidPackage, InstallLock, extract_zip, inside, locate_data, relative_name, snapshot_original
 from .recipe import Recipe, read_json
 from .rebuild import rebuild_content
 from .source import OriginalStore
@@ -29,7 +29,12 @@ def copy_runtime(recipe, destination):
         target = destination / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(recipe.file(row["source"]), target)
-        if row.get("executable"):
+        if "mode" in row:
+            mode = row["mode"]
+            if type(mode) is not int or not 0 <= mode <= 0o777 or not mode & 0o400:
+                raise InvalidPackage("Invalid runtime file mode: " + name)
+            target.chmod(mode)
+        elif row.get("executable"):
             target.chmod(0o755)
     # Only relative links internal to the installed runtime are allowed.
     for row in runtime.get("links", []):
@@ -55,7 +60,7 @@ def owned_install(path):
             and read_json(marker, 65536).get("installer") == "fumo-content-importer-v1")
 
 
-def install(source: Path, output: Path, recipe_directory: Path, progress):
+def install(source: Path, output: Path, recipe_directory: Path, progress, *, allow_draft=False):
     source = source.expanduser().absolute()
     output = output.expanduser().absolute()
     if output.is_symlink() or output == output.parent:
@@ -77,7 +82,7 @@ def install(source: Path, output: Path, recipe_directory: Path, progress):
             if not owned_install(backup):
                 raise ImportFailure("安装备份位置已被其他文件占用。")
             shutil.rmtree(backup)
-        recipe = Recipe(recipe_directory, progress)
+        recipe = Recipe(recipe_directory, progress, allow_draft=allow_draft)
         with tempfile.TemporaryDirectory(prefix=".fumo-import-", dir=output.parent) as temporary:
             work = Path(temporary)
             if source.is_file() and not source.is_symlink():

@@ -1,0 +1,2942 @@
+{
+  "schema": 1,
+  "kind": "runtime-source-only",
+  "gameAssetsIncluded": false,
+  "independenceProvenByStaticAudit": false,
+  "sourceAuditSHA256": "833b8503fa0cbf72342b4b5fcc117acfb3fa77bdc9cbae23b9d0d32cef8e0417",
+  "files": [
+    {
+      "path": "Assets/Resources/NativeSettings/particles.shader",
+      "sha256": "a5c8b612b0e8034e99cf03b3b518b71ffb432ea65d0e43db831b690487416198",
+      "bytes": 1167,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Resources/NativeSettings/post.shader",
+      "sha256": "d41e0e3a324b5ddc48e65d51c39a2fe085fa4b2e78611fbeb6b32f0b1bbdcd63",
+      "bytes": 1318,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAudioCatalog.cs",
+      "sha256": "07ecb895fc79051cbabce1fb7f03ded507ec4b63c46d9209d8ac91038c0fb06e",
+      "bytes": 2303,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAudioEmitter.cs",
+      "sha256": "0ae0302dfa09fbedfe8f45d147cd8a0a78b30843271be1d6db68dee58e7a6846",
+      "bytes": 1537,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAudioObservation.cs",
+      "sha256": "821963212f81d34e68e9be48a11cfa6a934dfad415a2547319969e0c18119bf5",
+      "bytes": 3515,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAudioRuntime.cs",
+      "sha256": "572e298cb7be5b4f8c93a929482ca31b3b359fa6d3f3a8c0b9f77821182425b1",
+      "bytes": 35062,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAudioRuntimeEvents.cs",
+      "sha256": "2ee5f666315828f912610057b1ca83f178e54f056068927bbb7751bc5059ca63",
+      "bytes": 2801,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAudioRuntimeMusicRoom.cs",
+      "sha256": "2867e2b4ce6991e8c25c1a5454a86dfd35355b838c2fa1a3ce4d16cbe581c8d2",
+      "bytes": 8503,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAudioRuntimeUiProbe.cs",
+      "sha256": "42acf7cf7f0d179eacb1b6b102934091d2e2421bf15cfa1926cd2221b63d67e3",
+      "bytes": 399,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAudioVerification.cs",
+      "sha256": "fa63e878bf7e303b57e3e0974074484c9be2a12c4ef1f5783cab14569f819171",
+      "bytes": 4506,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredCanvasState.cs",
+      "sha256": "510b23446bc28fa4b01630cb0d251d7fcc827a300620338b7ddb4fafe9e44b8b",
+      "bytes": 1548,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredResultsCards.cs",
+      "sha256": "09ca8b877be5ac9dc57de5d3bb0a7ddc371ded758a3b154710fe1070bc712d99",
+      "bytes": 3797,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUi.cs",
+      "sha256": "34edb161e988823c797591e4d221cd168e206cf1b7eb155be43e168bf2313399",
+      "bytes": 33864,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiCanvasProbe.cs",
+      "sha256": "803d503bd22627605b4aaa4b480f6fc3f033d1815704f0da32823b12b8b40a50",
+      "bytes": 7843,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiCharacterNavigation.cs",
+      "sha256": "108b41ab97e12fcbccec1e2d35a5c62fd02484f08e840af6a5400ff42e9562d4",
+      "bytes": 5617,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiCharacterProfile.cs",
+      "sha256": "b93f954879848bf5f493d253a6cfb8e2ecf93b6f711e44a18b84e2cd188512c9",
+      "bytes": 6372,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiCircuitBanner.cs",
+      "sha256": "dff9860faac8a99619809a816ad9b63f06273e6fd2448603252143e78fc9060c",
+      "bytes": 1914,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiCountdown.cs",
+      "sha256": "cd05b4a3b10f838c60d07fcfec6d3c373d67e77b6dff2579fc7f57619a0271c4",
+      "bytes": 4123,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiCustom.cs",
+      "sha256": "04968b95ac44556e45da06f6b1a3aa042aa125fe72719bf0cc223ee38c5f82e7",
+      "bytes": 10423,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiData.cs",
+      "sha256": "abffea08ec00c8b3292ebe35a56f6208da54b22a3c13f313a79e2fe44bb2008e",
+      "bytes": 3390,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiDiscordPointer.cs",
+      "sha256": "9cea9384bd3ee0a29a583592a2437e01dc4cccb29ed8d2a88475163fe1292b82",
+      "bytes": 3563,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiImageRendering.cs",
+      "sha256": "ca5305121ecae69e34cbc2ec9c08594d5c33f3d6faa6637fa72f0b9f940ef10b",
+      "bytes": 8318,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiInsanity.cs",
+      "sha256": "d19f99dfb8fad0ed2111c0dd1338afa169ede00038b286ccdaa09f8da0c35c6d",
+      "bytes": 1136,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiLocalSelection.cs",
+      "sha256": "9f59fd9d61c3493a14ff65123b0c05b7d7fec53ed8b3a427c262533d5d114b9c",
+      "bytes": 569,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiMenuFieldVerification.cs",
+      "sha256": "4c150d38c24b22c96345ebd3dac0a66e3888a432efc089f85866ea60343ad807",
+      "bytes": 14230,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiOriginalSprites.cs",
+      "sha256": "557b34c71759c5b70d7c3d668f87ea58bf291a6bad1f37a310051815b24ed81b",
+      "bytes": 8954,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiPlayerBox.cs",
+      "sha256": "9ec680b727cc60f70c280bf33ff64080a273d2ac4acf0a0b928ba4229c0607f1",
+      "bytes": 4140,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiProfiles.cs",
+      "sha256": "0484f3b58c0bb80f2b07f3fae9591f223790ad45a6ae99031c22206b2e55e2fa",
+      "bytes": 9499,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiPrompts.cs",
+      "sha256": "bca465f1464f847ce8a3bfbe399c387f944f1ac5c8600e13467d8e6f1545ee69",
+      "bytes": 1145,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiRaceDynamics.cs",
+      "sha256": "a75dcda7f424d449ad1b29ee86b38d5f0086c24cf89070bd24ab72fe2429f0ac",
+      "bytes": 12543,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiRaceMarkers.cs",
+      "sha256": "c5bd7106b193e5ad00cdd3f5f5ffacc66089c733a46207e17aa168b1e8025238",
+      "bytes": 5240,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiRaceRestoration.cs",
+      "sha256": "2a7f31ec1e9ff0f3cc9be1537dac284cdf1838f65c794965da954159773500f3",
+      "bytes": 8461,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiRequiredLeafVerification.cs",
+      "sha256": "98c32f03e7a8443d0318916f134029f5bc0c91d2a6ee1d4b0c6934cb66dd02bf",
+      "bytes": 4256,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeAuthoredUiSettings.cs",
+      "sha256": "46107db5071f451fb522d246e448c06c7388f857cb46e670075a3dcbbc2d9f61",
+      "bytes": 18060,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBakedLighting.cs",
+      "sha256": "c79ad7ebd531c2e869e36ebe5d251de35b948aed4e1cc1a0da14fae2a7047d8c",
+      "bytes": 2298,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBridgeSweepTrace.cs",
+      "sha256": "6f720a65933222395c501f288f8dacf6882a81084d4e7c1412ea293eeaae587f",
+      "bytes": 3854,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastAuthoredCamera.cs",
+      "sha256": "9ced8e0a9d1ea790d7ec72411b2bcecad00f874f6f7803594809dcfd2e8375c0",
+      "bytes": 9149,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastCameraComparison.cs",
+      "sha256": "f6ffd6813de1f26fbd13eb97f38354cc881586d2d756fcff179d63d425ff81b4",
+      "bytes": 12743,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastCameraMotion.cs",
+      "sha256": "4815f8aca4cd7c2b0eaff778bef64890be9d6d02b40745994cf4b3121c214502",
+      "bytes": 2044,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastCameraProfile.cs",
+      "sha256": "41aa84c2024e258a2ede2ae6cd4b985fa91ed5ead7d9ffa95ee1fe899032a4b7",
+      "bytes": 1474,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastCameraRecording.cs",
+      "sha256": "06e2521185022613c91a506d151d41cbddb18a3b6a92c248ace3ee41a7cb52a2",
+      "bytes": 3665,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastCameraRegistry.cs",
+      "sha256": "0908b05504b49f52e3d13d385b3e3cbcdac6801819eab79842d5ce030d4ae02b",
+      "bytes": 5556,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastCameraRig.cs",
+      "sha256": "a15df080b6137128b557f11eb2efae81ff214704d065d008cb40150dee1e8427",
+      "bytes": 27266,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastDirector.cs",
+      "sha256": "14d20ad9f1ff537477c4df7b4435e94b011ec7ae9859e398e98660517703021c",
+      "bytes": 9163,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastManualCamera.cs",
+      "sha256": "56abc27b04288bbfb3e59c25dd8cd396ceabdcc6249ef8e52ce5e1d54699c56c",
+      "bytes": 2886,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastReplayControl.cs",
+      "sha256": "6402288af891d2bbd1aacf51851fc8a9249351f0d29d9962b2b3d02f8fdc6b20",
+      "bytes": 2338,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeBroadcastShotPlanner.cs",
+      "sha256": "de9c5642aafe3d4057736e0ad39008e94230095bc3f9c9925319cf261e7a7933",
+      "bytes": 3015,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCameraLab.cs",
+      "sha256": "74f0f8613cffef0703dece9c9204f48988e1b387f76b7ff998434f6f9925e72d",
+      "bytes": 36892,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCeremonyPlaybackVerification.cs",
+      "sha256": "4864cdb7d6ae12643f854b784f76fc8d80182777d51d88ce941b528db9216398",
+      "bytes": 7334,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCeremonyView.cs",
+      "sha256": "1e9d02c0ec31f51af9b75e031e317aab8a03f236123fba87f5d2973fefc3d8c9",
+      "bytes": 12544,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCharacterProfileState.cs",
+      "sha256": "edc7456383650165cfe708301e7f3199015b64dd2cb91503388811e64c9a393b",
+      "bytes": 2274,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeChineseFont.cs",
+      "sha256": "8faa59fecded441f148b08fc1959efae3d470254fa5c1ff8f0523388d8486309",
+      "bytes": 3026,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCircuitGate.cs",
+      "sha256": "8a96b10567cba1c982892af35027d09059810499dc9b4b9c23ba9cbaf3361b7c",
+      "bytes": 578,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCircuitMinimapVerification.cs",
+      "sha256": "734442b74cbaab45dd6040751f8f7a22ec3b578423fb4646882a158929680460",
+      "bytes": 11164,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCircuitProgress.cs",
+      "sha256": "e0e89f04266d0a3eadcdd93b1507825de3c8977d53e150f7233677243d0b5587",
+      "bytes": 4190,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCircuitProgressVerification.cs",
+      "sha256": "12c6a2122484c336b91c3a12069e87a82eaf93894f2fab459d331d58e3144463",
+      "bytes": 5953,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeContent.cs",
+      "sha256": "422970e3b1b1dd2bdc626baa20289f4563783900cf23789ebbe96171bdebf701",
+      "bytes": 15085,
+      "lineage": "distribution-overlay-authored-source"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeContentBootstrap.cs",
+      "sha256": "f38d2c084f7d0bb9621627e01b1887ff18b808452462a3e11b835f065095a02a",
+      "bytes": 1285,
+      "lineage": "distribution-overlay-authored-source"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeControllerPromptSprites.cs",
+      "sha256": "0fc81a25bb250a7a2ae9d0807411c37a0c717f0b3c44595b20f4bc50a9b075d1",
+      "bytes": 2189,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeCustomRaceRules.cs",
+      "sha256": "371f2f19caf8eabdc1393ccc2eb3926a5f393d3f831ad30ca1b49cc2de2aa582",
+      "bytes": 2405,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeEventAudio.cs",
+      "sha256": "0652e6fb409f72975fcc0724939ae95e35c540c35260f164c03f14d2b636ba25",
+      "bytes": 1138,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeFallbackPostEffect.cs",
+      "sha256": "b4a4defce9ca083677ee410b5ab0c10ba8b9dcac1cfa3b450e9aabbf94b71c36",
+      "bytes": 1394,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeFrameProbe.cs",
+      "sha256": "0006e0e1cf6624706950c860ddf7cd05b22538a8e763c0a7ba9e91a7c632b8a3",
+      "bytes": 3107,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeGameSession.cs",
+      "sha256": "e864b4167f6d0143dc22a1720b0f9e9285d12398be37c71a6c21798253b18261",
+      "bytes": 10504,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeGrass.shader",
+      "sha256": "1a67de7ac188dae7b93f35636fd6580a18d600f39fd9e0f2fa9ddbb3d7edafae",
+      "bytes": 9436,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeHapticCharacterization.cs",
+      "sha256": "36177483cc2dabe96b5ec9bc984dc7a4b3179a6ce73d2e418a26c07402a36c75",
+      "bytes": 21796,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeHapticDevice.cs",
+      "sha256": "18a6065ca704fc453d60d16591fb1ecbeb159bcc893fad8aa19daa4340170c20",
+      "bytes": 10047,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeHapticExperience.cs",
+      "sha256": "3e984bf80d4232daa76d417f4c4b830d540863c97d90dcd066a698d6353f9bbc",
+      "bytes": 23663,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeHapticMixer.cs",
+      "sha256": "d2b87af37ddff939ac26f44ed0ac069ebe76f33a0ac704b11d53005836fd8e28",
+      "bytes": 12717,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeHapticResponse.cs",
+      "sha256": "479d48b9c821bd506f34044b8450610e6618346556a4907e1476ac643ca57192",
+      "bytes": 3978,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeHapticUiInput.cs",
+      "sha256": "db8ae814fbeb4a72d1e19752ea53545de18187e4036b0d102453a82f2753cf62",
+      "bytes": 1530,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeHapticVerification.cs",
+      "sha256": "c65f31932b4cfc6aaf91d18a3b86148a54fed03681d5e677b6111fae8d24dc6f",
+      "bytes": 11901,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInputBindings.cs",
+      "sha256": "70f14b6f4fce96f1607dac1bb97b95f06b2f386f228f65ffdd8aa6442b31b022",
+      "bytes": 22526,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInputBindingsCharacterProfile.cs",
+      "sha256": "be57be09498fd3f44b8fd5caff991264d8112f0dde12e5ff968a00b0712d3232",
+      "bytes": 5211,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInputBindingsLocalOwners.cs",
+      "sha256": "d8c3efc23219f8154d696e560b44dd7b4330209aa4fff5d7695a67492802cc33",
+      "bytes": 8084,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInputBindingsPrompts.cs",
+      "sha256": "782f8c7a1af49cfae5c7497901bd5424e799f54582d9eb3c6ed2ec8af562a893",
+      "bytes": 2758,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInputBindingsSharedMenu.cs",
+      "sha256": "a62e39e9bfe9357318aab8cd4a7da5679acb1535f6ed031606bbb95bf4d9d6d8",
+      "bytes": 2493,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInputLiveVerification.cs",
+      "sha256": "2cb175ee8fc96ecb76cf61292def95f92e4e5f429b87c8a0d16c9ca50fb31903",
+      "bytes": 18193,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInputPrompt.cs",
+      "sha256": "379c228006404f54c1c649a95b6f4461ed601bc0c3d23e5fdad7b7520da1b877",
+      "bytes": 3225,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInsanityHudRouter.cs",
+      "sha256": "669dbdbfa6047217aa89c65d3d71c51d1d1f24e65c1953cabbf59a84469957da",
+      "bytes": 1305,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInsanityHudSource.cs",
+      "sha256": "cf4957b3a99e3e48705b2aeebc144128982927aa6720a88785b4ffafde633b35",
+      "bytes": 1331,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeInsanityImage.cs",
+      "sha256": "a592b870bba0dbb1aef9db74e986eef6ed33666c111f1d44d995e912167899b4",
+      "bytes": 113,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemActor.cs",
+      "sha256": "a73c78071b0973c33dc031e41f75a3d4b987497952b8f522af552a8e8187597f",
+      "bytes": 17923,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemActorInsanity.cs",
+      "sha256": "f24b9faa7519c90010622b1ee706e0db45548a4354754974bc91ef80d0c42a6a",
+      "bytes": 2262,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemCatalog.cs",
+      "sha256": "a052d3e6ee9a6af88d0f99882b95b15e287c59e503232af789008e5581014856",
+      "bytes": 3306,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemCharacterEmblemVerification.cs",
+      "sha256": "439d1dc86d92bc7c227fbfbf2a4757f076bca7f7ac66d234795ed8c48e4c2a74",
+      "bytes": 11926,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemCoverageVerification.cs",
+      "sha256": "fa6950c237362cc41c5c3535c9d1673b76cd79579469670560de2ce939d0c7ef",
+      "bytes": 48192,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemDestruction.cs",
+      "sha256": "2cab07525bfd53c16cff0bb46900afe8da8be1ce8cbb5c59bf831ebbf463fe01",
+      "bytes": 1101,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemLaunchVerification.cs",
+      "sha256": "da28769fd0651af5fc97507649091c920300686c42ba460ab52d7e544f23758d",
+      "bytes": 16716,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemPrefabLifetime.cs",
+      "sha256": "94b20b6bc5ea9d16d07537dd472bf2bbf6b8da04a4e660d19d0d9a83eaac1611",
+      "bytes": 487,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemPrefabMotion.cs",
+      "sha256": "c3948bafdd4be338787c968e0ee001e9c2321c82c96912be4ef1b565fe4b5028",
+      "bytes": 810,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemPrefabQuality.cs",
+      "sha256": "e1f4f899421870e135fe4db4f5f8b8364bdf3c15de71a3fcdc6820783c791513",
+      "bytes": 1096,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemPrefabQualityScope.cs",
+      "sha256": "315a4d9471ae3c9163120b34e7bd46a282cbef4f8ccd659140e4e1eebf7294ec",
+      "bytes": 172,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemPrefabRuntimeVerification.cs",
+      "sha256": "bf5af05a89893f5bfe671b49a11d29fcd46c51677c6dc93cefaddb720a7d71ce",
+      "bytes": 28816,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemPrefabVerificationData.cs",
+      "sha256": "631e906ca0fc10d3b2d9e072d14c17a7ed65b070f5d7b888d66edbe2f63e1b8f",
+      "bytes": 789,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemRadarSensor.cs",
+      "sha256": "622f1093d1f74733bd54b60c4837aea3edaa72c078e6cb6bb928f9f11219cd3e",
+      "bytes": 996,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemSceneLoading.cs",
+      "sha256": "5613a220f52d26f82c8eec006ac7488f39c56728b7cadef0c7e5340c48aa9cba",
+      "bytes": 1267,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemSelection.cs",
+      "sha256": "b8ad07fd0c77a9682755f89651f0c78c2e58c93b1811ffded35561b76a6c2ede",
+      "bytes": 2285,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeItemWorld.cs",
+      "sha256": "35c80819d1f9b9b510fa0945f54c4726b8414ead5be0887789e2cabb7dc54fef",
+      "bytes": 23061,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAIMath.cs",
+      "sha256": "cced63a29a8536281fd8d7c43b2119ea9662e2c1a8b52ea27a153a23d28e4ec9",
+      "bytes": 8499,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAIMathVerification.cs",
+      "sha256": "b1bef6444d01b73fb2585b0fd7cde86e548dc247823c4c85d33c9a1577f20c92",
+      "bytes": 8670,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAINavigationPolicy.cs",
+      "sha256": "88e0937723f032c981c19594bbbdf568fe5905cb9cc8fdf3137629b5a195acd6",
+      "bytes": 2199,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAIOriginalVerification.cs",
+      "sha256": "4219680db1118932b83d658fa927ae52c92a0ff97fac9096813462741b2d0f87",
+      "bytes": 12202,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAIVerification.cs",
+      "sha256": "ec469c5deaf098d11af04ce765aa8552a609b12662d4cab4d5fdaeb2338f4f3e",
+      "bytes": 4246,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAcceleration.cs",
+      "sha256": "b7e13c3bd36fea2437364665cfbc519a79cc38ec8297b34f4fc9a62cbbe61a99",
+      "bytes": 4313,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAccelerationLiveVerification.cs",
+      "sha256": "65703800f96dec8449864b613672b7e766795b61a18c9a44d915108bb999cf08",
+      "bytes": 32534,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAccelerationVerification.cs",
+      "sha256": "090f37296f2c8e62180440f0843fbdbea59ab062cbab5e171e2c897959e5eb1d",
+      "bytes": 16695,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAirborne.cs",
+      "sha256": "ca63380ba81c5c88f21a0f9fee29fc418899a28380a03e77ab56a86dd1828fdb",
+      "bytes": 2183,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAirborneLiveVerification.cs",
+      "sha256": "9f1bcb08e351a1d1d665c81383fc27e17e26c25404e1dbc1a21da6c6c08d1e25",
+      "bytes": 30862,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAirborneVerification.cs",
+      "sha256": "abda13e856d774aa3daef681327323d48051620f7df4c66bb4a818f41e42e156",
+      "bytes": 15446,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAnimation.cs",
+      "sha256": "1fd2174a335d09f93a5d460420a2610653a8b0ad49fb7de5dab34af265a6e692",
+      "bytes": 2913,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAnimationActions.cs",
+      "sha256": "aaea3bfa9dcf80733d84de0541a4da80d6cfda80d2b3dc544c036f131fd6a0f2",
+      "bytes": 2559,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAnimationActionsVerification.cs",
+      "sha256": "28e01260026ac018f9f9db2637e4e6ad64f2b96bc9c8a9cb3caa6c11bf9482b7",
+      "bytes": 10242,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAnimationReference.cs",
+      "sha256": "34e8b39f075b6533f9072c4ee04d0e47fd49ad7f25e589a5bee775d9a74e776e",
+      "bytes": 6524,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartAnimationVerification.cs",
+      "sha256": "e61f506840665df18e0a10b234d18c3660d0ec31736838cec52ef941c8939346",
+      "bytes": 11500,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartCamera.cs",
+      "sha256": "d50c272a0168b4c3a499f06e526efafb04a1d61e1584130b42a6472960ef881e",
+      "bytes": 11393,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartCameraModesVerification.cs",
+      "sha256": "0e4aae884ddc6616129885ed98db6116afa446e25dddad1c00e306e4cf340f37",
+      "bytes": 21200,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartCameraVerification.cs",
+      "sha256": "172cab6eb6f6e5638b22c61d4aced10edecb5c25251dca55841c8968245136c1",
+      "bytes": 20994,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartClockVerification.cs",
+      "sha256": "71419fd77c48440b2488d62d9b5bbad9a76bd7a810107d1e4e79ec5f53491575",
+      "bytes": 17892,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartCollisionState.cs",
+      "sha256": "d1d8356c2c513ac281b3d0c385620dd3ed5f0c832752641d003ed47727bf724c",
+      "bytes": 4178,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartCollisionVerification.cs",
+      "sha256": "a6f3f16bbe9005fbe2500d03d3c0d3c955eacfa95b5abc4b6c905df1480c8550",
+      "bytes": 11972,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartDrift.cs",
+      "sha256": "c50d95149ed1284f840438eedcd67a271cecaf5a25c9dd7e46ce76b1bc924bb2",
+      "bytes": 2196,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartDriftLiveVerification.cs",
+      "sha256": "d1f310cf3eff53477c63bec7256b481c2fb6c5a0e65786de684f636fb2ebd817",
+      "bytes": 30107,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartDriftVerification.cs",
+      "sha256": "1a1e920b4c4100e5993ba6c85bc8184f36bf46cfe0f0e797145d8cf57d902ab5",
+      "bytes": 16584,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartFeedback.cs",
+      "sha256": "dfc6960ccb871086cb3037ab6fcc2ac6d5b8af07322197652459b268b7f17340",
+      "bytes": 8147,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartFeedbackVerification.cs",
+      "sha256": "d6640295c632cad9d0039788baa10916a5c923cbde50e0575a5e92f57519abe0",
+      "bytes": 27447,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartFinishCamera.cs",
+      "sha256": "fb2a38347ae60be01dabcc2f8a03e778ba25acc2c6137082bfd96fde438839d1",
+      "bytes": 2331,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartFinishCameraVerification.cs",
+      "sha256": "eeb121aace5a81e6648d3c49b09acdeba2d96917feea32522ac37a115642cf96",
+      "bytes": 18165,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartFirstPersonHiding.cs",
+      "sha256": "de74c529f0397270ff83a20a3dfa524dd0e4d1c911a706be957b036d0060cf69",
+      "bytes": 1746,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartHapticEvents.cs",
+      "sha256": "a8482bedffd3cf176c7bbac844cb82bd3a967348d384d095de728ae80817a4e0",
+      "bytes": 1080,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartHit.cs",
+      "sha256": "ee21858d808ce3acab429b9b76d32a3d59cd7d91fdda3ffd7d2320e8a3dbc6fa",
+      "bytes": 4423,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartHitRulesVerification.cs",
+      "sha256": "29d13990d31b6f8efdab7838720c80e4787c229b6ec80f7dfd2b2637b38a5b5e",
+      "bytes": 6374,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartHitState.cs",
+      "sha256": "487d7de7d0bd8a6f958ed6ff1dfebd0a6d442b66d4d0ffed9ee2ea9a4a57cf36",
+      "bytes": 3318,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartHitVerification.cs",
+      "sha256": "00c79a9f24f112b7c678691332ad2f241e8ee7e9919ca5b99b9dcb2d716328e4",
+      "bytes": 15700,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemBox.cs",
+      "sha256": "83065fd83b56911e374d69a6f5182e9ac1d5f0f3ae58d2e7c810c1c1e3d912ee",
+      "bytes": 2131,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemEffects.cs",
+      "sha256": "c53c3a32f47e1ea0ba8500dad886d5f3e2028b2f2b768d6ab8379d0136743f58",
+      "bytes": 9003,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemHitRelay.cs",
+      "sha256": "ef9c4d53f7147c63cc556926e0a535443c07c0dca0ed2adcda1236ca39a59571",
+      "bytes": 268,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemHud.cs",
+      "sha256": "d98f85f7771542b35adf09bdbe5b84ba014a9dccb5d8e27c2eeac4ccf91c8d63",
+      "bytes": 8214,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemInventory.cs",
+      "sha256": "74ac652ce79518ca6612cc58c067a30c5ad85d30fc545a21206f5c8c87816a24",
+      "bytes": 12602,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemLifetimeVerification.cs",
+      "sha256": "a369c8069b58e474b5b70e6ae24900a2e3132231b3d3ff826f024ff908229c72",
+      "bytes": 3595,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemProjectile.cs",
+      "sha256": "ad996d1aa6183c8f70f455e9751b2e6eaae95ab9a098bc37570d0d98ce3ddedc",
+      "bytes": 3804,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemRules.cs",
+      "sha256": "cb9d40312f4d76082de4cfefb71f7051f2729b98adc948a384e78230774de8bb",
+      "bytes": 3809,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemVisual.cs",
+      "sha256": "0382ed5709b790429444cfe5299e2ca6c5416bca31e2efaef91c3815456092e6",
+      "bytes": 1675,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartItemsVerification.cs",
+      "sha256": "a9798d3d38201bf9f9fa0fb9c8e763a3ed3e012ae7eade7941d2ec264573e9e0",
+      "bytes": 21458,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartMotor.cs",
+      "sha256": "715fbce9e954583cd9a69d70ac451fa20d937392956c02c7cbd79bc1e24775c5",
+      "bytes": 34465,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartMotorInsanity.cs",
+      "sha256": "5fb158bce7ca10b3df0fc063646331a550df990369bb049c6b412a532d3e1c7d",
+      "bytes": 389,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartOriginalAI.cs",
+      "sha256": "ab1818fd5ba5187d5cef2d0a3741922680d75d1cf5cf5487cab08cd4780a0b14",
+      "bytes": 12602,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartOriginalTraceReplay.cs",
+      "sha256": "73ecf0eed90156dc001d366f4b579895f12b1abf6cbbb65dcea5b71358408f02",
+      "bytes": 20850,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartParticleLifetime.cs",
+      "sha256": "e4b338a9814e507d27fc6a5bfd32b6604938f51e48ffb7777941431c51ebb175",
+      "bytes": 219,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartParticles.cs",
+      "sha256": "36fa70c0d89e70b03bcd82e2cc516d30760087d5099d87c701272fb19bd48bda",
+      "bytes": 2555,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartParticlesVerification.cs",
+      "sha256": "85807d549a29bc546f3fc892d053c3516b45f1d03d6643b9e49de4f4d6ed1e4f",
+      "bytes": 24382,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartRecovery.cs",
+      "sha256": "cb520a915e3be147788a887b92c4d45f271df698074600bc40a5e9cba22b67a7",
+      "bytes": 5674,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartRecoveryRulesVerification.cs",
+      "sha256": "b1058836182833fd5ad818a483d3714c33c167c3236441f66f3c9250feba1170",
+      "bytes": 2310,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartRecoveryState.cs",
+      "sha256": "0b3f6c4f31198f09e2be21c450dfb8ccaf19cdf349cff6d692c3bc09349824cc",
+      "bytes": 1080,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartRecoveryVerification.cs",
+      "sha256": "3c9b9b3041464d26bac2a0f0aee2d77f84c86f21b631fe7b8d6425fcb2bf19f0",
+      "bytes": 9616,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSlopeJumpVerification.cs",
+      "sha256": "a0d91166c3b7aad88ead28899d581cbcb1d16a87e10b3b31f242cbe64cc5f0ef",
+      "bytes": 7678,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSpin.cs",
+      "sha256": "d082cda0e253b2ab0be323b5bf816b28d09324c307facd1a11e6cf846c54ed14",
+      "bytes": 1291,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSpinLiveVerification.cs",
+      "sha256": "03d88fc601f708887a6f06137f3a7f8d9d0611e698a9850074d177fa6aa5a969",
+      "bytes": 23842,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSpinVerification.cs",
+      "sha256": "f694c4629f469d5b874b46d013b7729305adcd264aebc3fa6f371e61d7fbfb03",
+      "bytes": 8409,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSteering.cs",
+      "sha256": "0df9277dc425736cf913b7812545f1894225e049f012d862e2aaea11d19c33cf",
+      "bytes": 2675,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSteeringLiveVerification.cs",
+      "sha256": "39ec262d5ea9175d502d9421765f0142011d212b0540e9258e72fbbe6709c15e",
+      "bytes": 11297,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSteeringSlopeVerification.cs",
+      "sha256": "009bbaebd6d6738adb332020308c328d58144f624a0674e94cbef5a242f88b8a",
+      "bytes": 9771,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSteeringVerification.cs",
+      "sha256": "32dc9bebb044d57ef1adcc2d8541969e6966b071d95e383e4bbee987687d5d62",
+      "bytes": 16469,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSurfaceParticles.cs",
+      "sha256": "ab6133c75bfb0eb9c52fb8b8a9e9fddf7c07d12996b61085cf315d87a1764068",
+      "bytes": 5178,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartSurfaceParticlesVerification.cs",
+      "sha256": "a976320e7ac89bd6755461507ebce63576f15369d282110353cfd8473a138e79",
+      "bytes": 31811,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartTrajectoryLiveVerification.cs",
+      "sha256": "eba5872f63b2114dcb49a30f4b1dab1ab1daea726aa4d578497ddd0fcfaf7fee",
+      "bytes": 14013,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartTurnVerification.cs",
+      "sha256": "65d4b92fbc486bf30d7bf76fc17211a8b05e9e78bcf6f23d679e51bb45e3eb49",
+      "bytes": 24203,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartWheelContactVerification.cs",
+      "sha256": "6048b1c772524288e2591d63e5eca931d13bc3bbcefe8859779af4060d3ed6da",
+      "bytes": 32502,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartWheelVerification.cs",
+      "sha256": "c324dfc7eea5c19f887f2cf85347960a5bb049113c749f7b2487bc1a76da65a2",
+      "bytes": 29660,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeKartWheelVisual.cs",
+      "sha256": "8390aeb718f4fae50a51876786a7436f2eac0256e36ed55a94b2ad1d878dc30c",
+      "bytes": 11326,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLobbyButton.cs",
+      "sha256": "74e00e3d9c845c7eba5be6763bab0bf54350d60eea24a696b6bf19391800146a",
+      "bytes": 2631,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLobbyInputField.cs",
+      "sha256": "fd1358396c525520744596faf3a96b86081c713034be56c25fad3fb382b18c05",
+      "bytes": 4181,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLobbyLabel.cs",
+      "sha256": "383bea2ad5ae4799a23d01a29041bab600e3dd7ad2d4e7d4eb5a77b1e7d1d6a8",
+      "bytes": 1145,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLobbyMarquee.cs",
+      "sha256": "2499c9ef1590b25d9c524019464752e7e43c83c1514627935be45da024089b8b",
+      "bytes": 2509,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLobbyPlayerRow.cs",
+      "sha256": "01c6f1324a346f7bf8149f49f95e46661f4d530ed19ea6a48683800067760c11",
+      "bytes": 1307,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLobbyResponsiveWidth.cs",
+      "sha256": "5ff86b128b345ded5872b8119fe32b8c6c58858951ef676e9a0bd3ffe2429b24",
+      "bytes": 1109,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLobbyTypography.cs",
+      "sha256": "97792d5ee64ea88d6b5f8517981645ab8c044e4c78fbe2a2338647ee27e068f6",
+      "bytes": 2788,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLocalBroadcastDemo.cs",
+      "sha256": "400719d969c4e16895dd71ab8de9963cc92e48386a1602391a720c42a4cc3ea6",
+      "bytes": 2788,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLocalRosterOrder.cs",
+      "sha256": "3891bb51e845cdeccf013fe170d4c5c4cc0dbea0c23fee48780651f807c94b39",
+      "bytes": 1603,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLocalSelectionOwners.cs",
+      "sha256": "32bb070c5eb30204f94b28a8252c39dc75dad8efff49593addf4852b13007450",
+      "bytes": 8643,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLocalSelectionState.cs",
+      "sha256": "16f1517ed3cda416e0436f0e8184b6840ac2e4a92e90a8088391458ac0129fad",
+      "bytes": 8354,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLocalViewsSource.cs",
+      "sha256": "57c2cf34673f02b7662cc64ca4e8dafd8444f3c35c1a74385e9a01968fd52c87",
+      "bytes": 870,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeLocalization.cs",
+      "sha256": "43d803b6cb8b0b9599d96d59d3ea7a945b2774d26c1a5535d1006aaa976a4eb3",
+      "bytes": 10454,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMainAliasEvidence.cs",
+      "sha256": "62061c4c73eb728d7dc9e473a580ac702b3e6483b2e9d38812f0ab172332cb16",
+      "bytes": 2464,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMainAliasVerification.cs",
+      "sha256": "150441fb8a38e88e9f84c083d4f668578557fe6530660cde18ce19cb6ba78ed9",
+      "bytes": 16773,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMainPromptSource.cs",
+      "sha256": "2ea76f6ebdaac128cf2417893639ca6328d9b42c0e04ae0a20bf33a4b9a80758",
+      "bytes": 4577,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMainPromptVerification.cs",
+      "sha256": "d2031ff2de41c4baa68caf1577a7dc32c4377c8e65c97a1e2b225ddd1076e9f7",
+      "bytes": 10165,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuButtonVisual.cs",
+      "sha256": "f1054abcd89b05c10ff4bce540aa1906aa4567bfcf3c987ac303d14420e1f1f8",
+      "bytes": 1559,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuControlVisual.cs",
+      "sha256": "9ec83e2036e14e9e7f143c907711032b8e54c62ca690a876b7e932eeeba81158",
+      "bytes": 629,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuNavigation.cs",
+      "sha256": "c28a05e290a57985a3b0f2d984dcf01a63d569601a6777c7d35eaa7b95a5cca0",
+      "bytes": 7694,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuObservation.cs",
+      "sha256": "b48944676145f67a4db04b20919f1c6048e2b730c27d562c8fc09e789ee885b1",
+      "bytes": 8454,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuPostProcessingSource.cs",
+      "sha256": "1a35187f8ba71f8c917112fbbcf984f02b2d5698dbb52edde9307da09223f254",
+      "bytes": 507,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuPresentation.cs",
+      "sha256": "1531aa3daaaf52f9a29ce22e4e9c3ac471b37b18c514de0f0129289fac93622e",
+      "bytes": 7787,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuRandomDisplay.cs",
+      "sha256": "8cbd93c3b8f9e1191d0e56a8e9f44be5de4c6df78174b7b7e3cbb9ff85bf32ce",
+      "bytes": 5754,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuSpriteData.cs",
+      "sha256": "fc600893640cb79f95f9a0a6cdcef9f4e2a5c841c1161204dbcf3efb10bff1ae",
+      "bytes": 655,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuTextLayout.cs",
+      "sha256": "b787aba37ebaa5d9c853ee9345b78f2933d9f9b3f20d4d278624f27e41b101cd",
+      "bytes": 1783,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuTransitionPlayback.cs",
+      "sha256": "0e517be6d6a438b0cf65c60e827a92ae18b97b7c6c73ae4bbf83a1f86eb1e5ac",
+      "bytes": 8575,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMenuTransitionVerification.cs",
+      "sha256": "1e09e5073e03e05f9efa09e72b237ad062d86b64848e959554b9458ae2edb581",
+      "bytes": 7892,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeModeCatalog.cs",
+      "sha256": "ad5e5e82e78b1559939d1676c48ead24bea536b1800bb29d547bfd6cef519508",
+      "bytes": 4964,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeModeSaveDiskReceipt.cs",
+      "sha256": "973b2f1193ca711f381dcf77f01efbcc72114a8700ebe449552e2a8c2746a98e",
+      "bytes": 9236,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeModeSaveNaturalAudit.cs",
+      "sha256": "7a4184d0453e4068090bc8a1c746af630d20b8baba893f36877db8cc32532482",
+      "bytes": 13930,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeModeSaveProductionVerification.cs",
+      "sha256": "fcbb68345962a09956b9232f47a3c093302cb6c76d0ed51aba114afd24e9e261",
+      "bytes": 27225,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeModeVerification.cs",
+      "sha256": "7332d53e7dbdf09fd63281065fcceb03ea6ac66a3b20068820b1a6d709f821dc",
+      "bytes": 4909,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeModuleStructurePhysicsDriver.cs",
+      "sha256": "2869f3ab0b658102d11034c217d09bd81c5ac14c4e09f087380b21dd373d010a",
+      "bytes": 2145,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMotionAudit.cs",
+      "sha256": "f1c58ade947233836208cda6472566619fd7440dff2293e0cf7d746abab9092d",
+      "bytes": 17345,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMountainsBridgeSweepVerification.cs",
+      "sha256": "da8f364e670498394a59c9e618c9e82d2aacf0e7ee737733c2f4421fc3042427",
+      "bytes": 10412,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMountainsVerification.cs",
+      "sha256": "b0c7cb6e88ae6f1910cbc817b69896f118ba131a8a0d45aa1679ca6ea8b60fbb",
+      "bytes": 8464,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeMusicRoomData.cs",
+      "sha256": "6781b58e2ac61aa5ff9a16f82d1903f74aa1fd405914eeb60c7e5989ef512ba5",
+      "bytes": 670,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeNetBroker.cs",
+      "sha256": "ad354eddbfc129ede4b3b8776d27b41ab1e91fbc825516d1e741c4e376486021",
+      "bytes": 16386,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeNetConnector.cs",
+      "sha256": "73525f835e4a6c2f935876d5cb678ba922a00f6d1aa00e4c3d2e3874e6c00208",
+      "bytes": 44470,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeNetProtocol.cs",
+      "sha256": "754dbdce0252d1806ca00c116afafeae52e542c2cd7c11b4fdc95f2c2485fed1",
+      "bytes": 854,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeNetTransport.cs",
+      "sha256": "6b70f118f8a30bf9c60c74409f4503a9c2dca55ad99f9b742296a86aa64c7eec",
+      "bytes": 8054,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeNetworkSourceAudio.cs",
+      "sha256": "28cb29a30c9e0fa0a48d7379c24b208cb8bfe1fae3796a07ce6d07aaafa06b6f",
+      "bytes": 1846,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeNormalCpuAudit.cs",
+      "sha256": "28f282e96a460548938f88e492d22641317fe4b739f92837e1ab3f8bf6912202",
+      "bytes": 4671,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineAuthoredNode.cs",
+      "sha256": "828a6bb4a44f573233c0696644f5fdd5128a5d306e5bc73f393425a6e344b5e9",
+      "bytes": 1699,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineConnectionAuthoring.cs",
+      "sha256": "d6dc97883bc9903e1d127c2aeaa5f32e64315a19122c66df3cfc2daf20416e76",
+      "bytes": 235,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineElement.cs",
+      "sha256": "f02e39334b6e514e2b7b7040d268b790da57f84a13b92a0c7d3d6d3c7d561e38",
+      "bytes": 2158,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineLobbyView.cs",
+      "sha256": "da519fee27be6616a7fe72c2eec11e8d4a32417d2cd5a5611b82933d7523f198",
+      "bytes": 4998,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineModuleHudView.cs",
+      "sha256": "8d3c6caee1a0e93997a8616465bf569bc19b229e038f9f379c5f5e826d74acb9",
+      "bytes": 304,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineMotionSettings.cs",
+      "sha256": "ae5e27909e0bb0d4544ecb249d7bb46e5f31e906d984a66bdeccf5210ed64314",
+      "bytes": 1262,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlinePageView.cs",
+      "sha256": "158ca685d6b08db56ff3baa9f7e83ad413ed8d458503a8f68971e4ac2b1edf01",
+      "bytes": 1884,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlinePauseOption.cs",
+      "sha256": "1c49642412bc171462507c5e7f5c6fc6030b6266617695d3b1e92e8a6fcb9e8f",
+      "bytes": 1489,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlinePointer.cs",
+      "sha256": "5cc4f7714aeed0fdcc43b37c0ad104a5a780399314def3ff3ce3af7accca3dfb",
+      "bytes": 2348,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineProfileNavigation.cs",
+      "sha256": "6f87a495c76064c13087b2d03947fe6f9a9ad92c912e930d3e3181298a28b43b",
+      "bytes": 245,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineProfileView.cs",
+      "sha256": "fa975f93279ec9d874eb1623bc5f8292211668016d3b6c695cd2e2089c24d2d5",
+      "bytes": 1160,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineRoomScroll.cs",
+      "sha256": "2cd663e57178d779bb4da6337ab90347c975ba0a46a0b32ae7df357dcb48381f",
+      "bytes": 1635,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineRowGroup.cs",
+      "sha256": "d897e00858af719dec7b233a4693985c22aedc9c69aca22ba624a96875dc6332",
+      "bytes": 997,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeOnlineSpectatorView.cs",
+      "sha256": "f6ce90ffcb81a1ae0ae53442d7d2a7569167cb0ddc99836fb2e1d6ff30582956",
+      "bytes": 3970,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeParticleQualityRegistration.cs",
+      "sha256": "5dd8542eedb6589e2e68608cd4a88a9ec5759992fc66501f68465f8aa391303a",
+      "bytes": 3388,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeParticleQualityRegistry.cs",
+      "sha256": "b39e6a02e67c67adf77769ac5faa72abf393d528b97b6da5c5475386c29adddb",
+      "bytes": 5569,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePerformanceEvidence.cs",
+      "sha256": "159ebc54d21e7a78a1d3b795d1f1680def83901ece582bf519951e53ca7c42ea",
+      "bytes": 13100,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePerformanceFinalBlit.cs",
+      "sha256": "fc1ac87d32c063816ae59311c9f9c1455e499c1f0719b6b79d0dbc8bcbcfc245",
+      "bytes": 872,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePhysicalInputAcceptance.cs",
+      "sha256": "a01b4ece3abceb9b165e63a173d78eaf266da90aebc9f31f5c4874c093af402b",
+      "bytes": 4893,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePlayerBoxSoundData.cs",
+      "sha256": "cc8de2201c5c621ed4d4cc6757b98693380b33a53fe784c1d0bc2d6f1bc10142",
+      "bytes": 2114,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePlayerHaptics.cs",
+      "sha256": "8785377b1b9382bc907b7ddfb2a6f8f9e2f23c9b27b514beed28b05df8a8a94e",
+      "bytes": 7964,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePlayerNamePolicy.cs",
+      "sha256": "20bd6e1fa2039e85d92c6c5e8d9d5b120153a0199aa6cfb07fe83ef0ebe79394",
+      "bytes": 4733,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePreviewKartProperties.cs",
+      "sha256": "650611b669691818d2b1e2d3ec64255fcee78e340b1ccfdda14133e082af6d97",
+      "bytes": 3624,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePreviewKartSourceManifest.cs",
+      "sha256": "b9322f5a869980ad704a59b9d604a46dedff8bd9cc27f60fe82775144ca945f0",
+      "bytes": 470,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePreviewRenderProbe.cs",
+      "sha256": "aa8448ac2e49e05b7a0deaf81c9d4350e3efbed3f1f2b12d64b9cb265803c862",
+      "bytes": 17488,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeProgression.cs",
+      "sha256": "df41bcca43b18850c4a9d1d43d28b364997975f67bc2c18126f16e4a0a153d9a",
+      "bytes": 6667,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeProgressionVerification.cs",
+      "sha256": "053e8a38945e190836f76da1affc53bbb23b5fa967e33dc037e120f0056c829c",
+      "bytes": 9097,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePromptHintLayout.cs",
+      "sha256": "b2c83e0adce89bf869309524d79b37070caf0877514914b0d17b553aecf71e97",
+      "bytes": 3204,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePromptRowLayout.cs",
+      "sha256": "8b542107f7db2068cda222f95a720d619a7b3dd1db7195b336880888d78eed28",
+      "bytes": 3120,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativePromptSpriteCatalog.cs",
+      "sha256": "619439f50825663eaeb057f0a47fe82a238a5f701b81a8f5967e29e2dbc95e9d",
+      "bytes": 559,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRace.cs",
+      "sha256": "ba28a466af023fa0174a54f1709d3f7caa90a8d3b0a21cb4e486e8351d849caf",
+      "bytes": 87460,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceAudio.cs",
+      "sha256": "deb86b2ecb2690af96fdd9a7f01ec117c2a731ca768de68cd1619ef495214a06",
+      "bytes": 3213,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceCharacterArrowVerification.cs",
+      "sha256": "69739bebbec2cd24dd1e786d488ad5ea6672d5131bd560fdafb76ad1b6eaba37",
+      "bytes": 3058,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceCharacterNavigationVerification.cs",
+      "sha256": "4ea7f23994f626708b6b538fb600f0918bb0277683005215d19b921fe92e52bb",
+      "bytes": 16298,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceCharacterProfile.cs",
+      "sha256": "c06ab3e5ed5b9fa3d87129b6e0b84468b61dc92ca744b971ff30e3d93c106c1c",
+      "bytes": 3603,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceCharacterProfileVerification.cs",
+      "sha256": "572cb30fa40a173f3d0b88ff124240b447601645b78b4c0e805895fa298571b0",
+      "bytes": 25740,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceCharacterSelectionFocus.cs",
+      "sha256": "d344c59289a0bf2f29f3b43618327a7ff2584a7b59559ab8f687e21827c1b4f5",
+      "bytes": 1160,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceChineseVerification.cs",
+      "sha256": "94992e420e72880e741b65752e130d27d3f52d57f5a5421c0936b6a83e507cf4",
+      "bytes": 8692,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceCircuitBannerVerification.cs",
+      "sha256": "dd0fc9041bd8d83ade41e754225ae3182abb0a491182c7c171c87dfaec7ea2fb",
+      "bytes": 7287,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceClock.cs",
+      "sha256": "44999374facf278a7f5cce59b34bcaa966efa9d0bec1a3a081091fddbb0f1cb6",
+      "bytes": 1182,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceControllerMenuVerification.cs",
+      "sha256": "926c863abe2986241c4dff249ddc2ce811055f4d6932c0df959b726b04560b0a",
+      "bytes": 13469,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceCustomizationInput.cs",
+      "sha256": "89dbba8b7d4bac2de678040a83f4a45f041e6650eb4bc71228af8661298365cf",
+      "bytes": 1101,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceCustomizationPointerVerification.cs",
+      "sha256": "f0918975be7d64e7dda7ff9ca8fda3b52b83fcb7159bf47c6e5566666e142f78",
+      "bytes": 29843,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceDiscordPointerVerification.cs",
+      "sha256": "82c5c52e1d49044d5cd260f487f72ec50c3b8c0e1f2218d3c69a6cc6891fdc17",
+      "bytes": 5180,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceEventAudioVerification.cs",
+      "sha256": "b293585209ad1845439ffca0c5898c368ccfc93459522840f406cb479538e6ce",
+      "bytes": 19997,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceFullModes.cs",
+      "sha256": "049ec744f7d3570f9667b6c0e4a781623b4930704f9ac56678933cdf5ef19c36",
+      "bytes": 20252,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceGridVerification.cs",
+      "sha256": "cc032e52ef65c9953dd16f4647cde717cd4da5d8619097a3a865b2123e41b032",
+      "bytes": 2950,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHud.cs",
+      "sha256": "c43c6567daea2af692741dd45911511c92a60f33099be4b7dbf718e7ca6163e9",
+      "bytes": 22168,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudAuthoredMenus.cs",
+      "sha256": "8bf36d7a1edc499537a2bf0414a23906cf6426e7d7f50b5fd368ed1ee36b5ed4",
+      "bytes": 15177,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudAuthoredPromptScheme.cs",
+      "sha256": "d8a361aeb54c62fdda4b443bf92536f742eb93a4b9db23ec691a35dd0026f2e7",
+      "bytes": 3580,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudAuthoredTracks.cs",
+      "sha256": "621a569a474fd2af37c3dd88e1d291578915f5e550bf2a9dcbdaea45ce7e8525",
+      "bytes": 6925,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudAuthoredVehicles.cs",
+      "sha256": "0d4b361fc8a25979258b786a0a174b381e50b43b4c95a85f16b287060588c17f",
+      "bytes": 4018,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudCircuitBanner.cs",
+      "sha256": "adda11556d747d3e8aad7e1a235dc570ea647f7cf6af9094968552ea7f655d5e",
+      "bytes": 1578,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudCustom.cs",
+      "sha256": "7973bbcc7138d5d392b0c5ab047eee9a71e754bfe42043343d984f3b2858731c",
+      "bytes": 6799,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudDiscordPointerFixture.cs",
+      "sha256": "abe2af9135329d4283177805365e6aec3950e2a28a1f556051e9be35bec4aef3",
+      "bytes": 244,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudDynamics.cs",
+      "sha256": "0e2a1f0ce70f568a46aaa610d547b886c3552592328af61984a24980791a5136",
+      "bytes": 3200,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudDynamicsVerification.cs",
+      "sha256": "0e3bd4d369f4705581b2abd1dbddfec8d088a2d5df70612b047d927e6b8a36dc",
+      "bytes": 29624,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudFixtureSession.cs",
+      "sha256": "f31fb237092721f903a5c68becf158c351ee47134946953bfed542de9f39ef74",
+      "bytes": 1683,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudFullModes.cs",
+      "sha256": "7ceaedb477d5e60f5d34cf5d7e5066ed3e046725ff14e850322035db132a873d",
+      "bytes": 10167,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudLocalSelection.cs",
+      "sha256": "e375cad9b0d22688fc26ad9548fcca102fc06f6168b0e101016b391576025dd9",
+      "bytes": 7063,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudLocalView.cs",
+      "sha256": "9fc48516b22d9e3c2068446cc90d4ac6f5a104193763368ea090c2861af58083",
+      "bytes": 2579,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudMainQuitSource.cs",
+      "sha256": "c8437190c83c59358dbd50d307f50147d79e980b7921bfd1f8713320b759d743",
+      "bytes": 1888,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudMainSourcePrompt.cs",
+      "sha256": "37361108da83da90fb708f165b299f70c340b0d1766f43670b662aa7d65ea93c",
+      "bytes": 2570,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudMenu2SourceLifecycleVerification.cs",
+      "sha256": "b9ed85a4325650bb99d6b6be802938e3ab69c12efe86765b539ae1294ab786cd",
+      "bytes": 667,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudMenu2SourceWheels.cs",
+      "sha256": "8267a72ec46b7d274d13e86c1a2f5a8b16464add70a8cc003acaabc80b440014",
+      "bytes": 7187,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudMenuParity.cs",
+      "sha256": "c7c90bb108836810be232853148528a2e472b7333b73f020b8a0787653dbe6dc",
+      "bytes": 7204,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudMusicRoom.cs",
+      "sha256": "0dfa040d1053c50a040d6aed6d8578f5dfd6b2da512c5df31aff0820259336a6",
+      "bytes": 1884,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudNetwork.cs",
+      "sha256": "f3d8fee76390583ae3412791ee27f1e9bb5dd0d7f58773a178d526b0f096c91f",
+      "bytes": 6556,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudOnlineButtons.cs",
+      "sha256": "2371b7643830fa366276fc51478a83ec31422e9cf771ce8a960d97cecc661e61",
+      "bytes": 202,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudOnlinePages.cs",
+      "sha256": "5f8245f85a8862f107c887c767499c7edae44194b1b8b4f9be2c08893a92c098",
+      "bytes": 4132,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudRaceMarkers.cs",
+      "sha256": "e9433d1996c517dfc19246a1673e75efd44a1df170851c78f8033f6110eb86fd",
+      "bytes": 3855,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudRestoration.cs",
+      "sha256": "ecbff842f881523e31c5ae91f1388799651070a824e90257bf6bc96dc113738c",
+      "bytes": 3229,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudRestorationVerification.cs",
+      "sha256": "0b3f65af217db92dc59b8629041fdb6f34d9a67cf485bca861f12b44d2a66bfa",
+      "bytes": 19313,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudScaledSourceTransformWriters.cs",
+      "sha256": "0be0c68230d158ac08f3a85c1f5687ec3b50d034c3007e5ccbf7d136a0b5bd6f",
+      "bytes": 10866,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudSelectionPanels.cs",
+      "sha256": "deeedbc81e0d721d28c941b027c333472e607bc01ff3064e73807e367f382772",
+      "bytes": 1995,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudSettings.cs",
+      "sha256": "9f13d742cea678a185a6a2de03fd5212af511c6bb17a40bf04c5f89f0af490dd",
+      "bytes": 10245,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudTransitions.cs",
+      "sha256": "ad991bb3646418b94c48beeae339a7dc042ae37b3beaaa82e87e5b6b4430e18c",
+      "bytes": 8789,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHudVehicleModuleBars.cs",
+      "sha256": "b27036f3fdbcb2a235189bd737dfb446454d9026c5683acee23861d3b89f4226",
+      "bytes": 948,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceHumanInputRouter.cs",
+      "sha256": "4432b123d898e515bb7c033872821225a3507fe6e04c026a4ca8f8d1e050ff9a",
+      "bytes": 4854,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceInsanityNaturalVerification.cs",
+      "sha256": "4116f79d6aec44209f82f6e11340752ac68ba3925aac7cc25e496242434cb54b",
+      "bytes": 10658,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceItemCharacterEmblemVerification.cs",
+      "sha256": "71cd2f7b655fbcc7c51c82520f579ca9369dde580d51aaffbf105f0795f628cf",
+      "bytes": 1781,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceItemPrefabVerification.cs",
+      "sha256": "1b14796b4ef750dc78eaed1f4adee02a31dbb2392c8b7a0045dee3dcf063f1eb",
+      "bytes": 24825,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceLocalSelection.cs",
+      "sha256": "03379efa22386433aadab7d514a43d5965d05751ae066931edd5af5fe7d58474",
+      "bytes": 15779,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceLocalSelectionPreview.cs",
+      "sha256": "1ed3a3bace835c71264907eaf2785dc50cdd105e40e85f82a0a08f20e3059f38",
+      "bytes": 6725,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceLocalSelectionVerification.cs",
+      "sha256": "f9a2080aab0547bc21d83f5197b0dd24444bbd472d9770a87cc283d042066ead",
+      "bytes": 24986,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceLocalViews.cs",
+      "sha256": "fec549d17ddabc18fc9267ede4901cac2984f315eb2529ff3ad7246705c13dd4",
+      "bytes": 12662,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceLocalViewsVerification.cs",
+      "sha256": "c293ff4c53b1694a6550ce12973a430c70babb9caf17fe41a4dc326d9869d25e",
+      "bytes": 19601,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceMainQuitSource.cs",
+      "sha256": "b09d5fdc96857b7b12a84f4a450bb9517e5ef574ef4264b908175630fe93d5df",
+      "bytes": 5911,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceMainQuitSourceNonrenderedVerification.cs",
+      "sha256": "f631d3ddc083aba62d52bc7e617131d3e4f4c9a0953f4216654be5eae0eefdc5",
+      "bytes": 16186,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceMainQuitSourceVerification.cs",
+      "sha256": "1a2dcbde423377a7701b26c0f4cde2433fe8c7f1e3faae97a57042d2c8e5fa5e",
+      "bytes": 15290,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceMenu2SourceLifecycleVerification.cs",
+      "sha256": "b639f0530ef4ab3216fb7e0a1bdb07c5d4ef5928e981447e3b9b20594f7ea6f0",
+      "bytes": 4243,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceMenu2SourceWheelsVerification.cs",
+      "sha256": "3a2cf15716d7583cd9c2f3e4e5627e31ce64046ad62e6b82f3a7300ff7759b2b",
+      "bytes": 3720,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceMenuParityVerification.cs",
+      "sha256": "e36cb20cb661365e2173d621b85831f21ea4354a634c930f244e93cc65b7ed93",
+      "bytes": 33850,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceModeVerification.cs",
+      "sha256": "68462ea9313713847077f59eae32264c1b9e1732b88a100e918b13b5194b2807",
+      "bytes": 35912,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceModes.cs",
+      "sha256": "accbb797e119d9b25df69611ee245cdef7b154543e955022173b909f7fbf6ab2",
+      "bytes": 13943,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceModuleWorldFxStructureVerification.cs",
+      "sha256": "bffb27f4c61badb0ee5e33c3bf0af100c3e34193209d70ec428c9cdd11faf57f",
+      "bytes": 11056,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceModuleWorldFxVerification.cs",
+      "sha256": "47ed9e9436978aee32b8660b1cb6fd18864c44d2213ed054f03f38df53adb29b",
+      "bytes": 7029,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceMusicRoomSourceCancel.cs",
+      "sha256": "8578920ed6424a9748fe6e03e66286e147dcef80cd03b980e57a6a69f95b00d9",
+      "bytes": 9784,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNestedOptionsSourceWheelsVerification.cs",
+      "sha256": "182d83f6b448aa75d4c9334d8e48fedf5295817f180d9ca58f80ee8d31da383d",
+      "bytes": 3355,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetwork.cs",
+      "sha256": "9bc40b891327f32edb93f39e1f3f48462a9c65f048ee76d217b4ecf2e9e675cb",
+      "bytes": 44458,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkBroadcast.cs",
+      "sha256": "d8e5bfe236126a8f4f21733cbaadb5af4b0e4c5905f63d9d1530edb804e97e35",
+      "bytes": 3728,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkBrowser.cs",
+      "sha256": "227c98b6920b671eaf650c4bdfa0813192eee91fab43264b0d29a70aaf6642d9",
+      "bytes": 10089,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkCharacterProfile.cs",
+      "sha256": "1812035dce93cbada8e54638162426252b5d30921a820d2ca461eb146c6c7167",
+      "bytes": 2543,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkDirectorVerification.cs",
+      "sha256": "31eaf5c7ec92a0cec1c907b540d3d8a5ce5cff187f76a58c954fe223b0576fcc",
+      "bytes": 19725,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkGameplay.cs",
+      "sha256": "a0e8bb8e37f50e717ceb9d3ea9c92a8b985c8a6c3045a4f756ddf8c67a53c086",
+      "bytes": 29365,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkMenuPages.cs",
+      "sha256": "43831959ffc8eb9d0fc14c12a9961151652a76ec21e4988998e5db2e702cb769",
+      "bytes": 6036,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkMenuVerification.cs",
+      "sha256": "db1b45cfc6c7664100b21da1a8a9877e2c453d7aaf6f533fbbbfde26ae13cf4e",
+      "bytes": 31230,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkMenus.cs",
+      "sha256": "5bba41490641f7efb31d80580e6fdcbc67d564aa8e627b5c68b70c274a2139a0",
+      "bytes": 9445,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkOwnerDiagnostics.cs",
+      "sha256": "349b73f92d2a535fdc5db49871c0716a38ac59fc2734d9b5b6ffa074f0194798",
+      "bytes": 11174,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkOwnerRejoinDiagnostic.cs",
+      "sha256": "b5bfefe0f44b1b25ea2aafedb39b6b743dd36db376397ce856d045a8f504dfa1",
+      "bytes": 6931,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkParityDiagnostic.cs",
+      "sha256": "e808d35b69e588b574add383291ff5fda638c868130eb6ad06c35d6d0b93c9be",
+      "bytes": 9664,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkPause.cs",
+      "sha256": "17f12969d40019b8ebd4778310d9d1f97abc02d7e67f0292da0f2e730813953d",
+      "bytes": 985,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkProfile.cs",
+      "sha256": "899d23f551470b654516ae1e90588cdbd361402557373c450b0b9084227b133e",
+      "bytes": 11274,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkProfileDiagnostic.cs",
+      "sha256": "c925ce6aa1c789af4e725e1cf37afe87840ea1b79d5217491d457edc7ca8ead8",
+      "bytes": 11975,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkRaceMarkers.cs",
+      "sha256": "d64be007598803f73ee64013a191cfa15b918dc828d9cbffd9210acda92a6fe1",
+      "bytes": 641,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkRecovery.cs",
+      "sha256": "c38f8974d7e4563bd65b62b45a9993eb9db41dcc9f416995ceedde2ac942d963",
+      "bytes": 8412,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkResults.cs",
+      "sha256": "1ad9fe8da035ce1a25c24c77304b57598079f10f3c126fa8f4c6c5984e6d6808",
+      "bytes": 4047,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkSetup.cs",
+      "sha256": "61b67abe7d5ecef041555ea660b0b8cc2c163a3bbb17cf17605becf134ec13e4",
+      "bytes": 6521,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkSourceAudio.cs",
+      "sha256": "b00e0fb698a6f4b5cd2c1db0b908a4e13f6bfc4c35759262a38ea4f4436fb90b",
+      "bytes": 4035,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkSourceAudioDiagnostic.cs",
+      "sha256": "09dc33eced9b36f057d3210f2537147f78760078f57fcf9b287b87a7750af042",
+      "bytes": 5328,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkSourceLifecycle.cs",
+      "sha256": "c4519489c7392400c7e08047bd792a241916f045fc516ada6ce98f5d8b8287bc",
+      "bytes": 5936,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkSpectator.cs",
+      "sha256": "37696dffd3697ae0a61e5a8bb90bdd47925bbdb189ddaef1f5919cc767d7243c",
+      "bytes": 5589,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceNetworkUi.cs",
+      "sha256": "f1a4470bae1f844744c1d13697b41e8dd27c4fd32497754ca007c4de68d0b56e",
+      "bytes": 53163,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceOfudaSourceVerification.cs",
+      "sha256": "b5a0a2f96b130c280a6761af4acee36bca6ffa45427b56e44d08113b585d2fee",
+      "bytes": 6358,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceOnlineItemHud.cs",
+      "sha256": "f8a6d38ad422c1e70925cb7dd0248c21f01b67d6331e5e1964dc54da260519eb",
+      "bytes": 1382,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceOriginalHudDynamics.cs",
+      "sha256": "c26797be2c5c57c52869d1164e043013545d81441a271727690292f1272b1f26",
+      "bytes": 740,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceOriginalSpriteBindingsVerification.cs",
+      "sha256": "b6fd81093b837953e26b78806e76b76e2f0ecd2538548b9134f06bb454cd4ff6",
+      "bytes": 11105,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceParityVerification.cs",
+      "sha256": "8a07aa05bd115723240dc452e65e6bcbcf31d8575ce74f3b792c631898dc1677",
+      "bytes": 1090,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceParticleVerification.cs",
+      "sha256": "c8b98259f3f25b9727749c284269b9d8cea493a1d8a731f978768a5c99b201ba",
+      "bytes": 3976,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRacePerformance.cs",
+      "sha256": "5f45f4d6089acc7c729f764c967437a8f94c68a04b3939963fe9bee0b8daf16b",
+      "bytes": 8045,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRacePersistence.cs",
+      "sha256": "c60a8871c62c24fb169badbd77eaeb228d13d63463da86dc21b409743af9668a",
+      "bytes": 11927,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRacePlayerBoxVerification.cs",
+      "sha256": "819db895a0b60b8d3a4b2c6c07332bb7e40b681586cb1fde8a4e14707fe3b302",
+      "bytes": 27569,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceProgressionChecks.cs",
+      "sha256": "40ba9354bc635a1278c25113b1a5859291cf28cfb95de433d6728a3ac1541745",
+      "bytes": 24908,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceRaceMarkers.cs",
+      "sha256": "d81ea33aec0d8b4f5d700abe109a649ba12bf771dadd0b6972fac453e33e5f4c",
+      "bytes": 2969,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceReadyPrefabStructureVerification.cs",
+      "sha256": "d6aa8c4a03b84a3e94af3ea928d966a8b893b073bb279591507dfb578e027c84",
+      "bytes": 21018,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceResultAppend.cs",
+      "sha256": "f6b20b0d85ad1a002d1ef3a6fed2beb3e181a785b69ca9034071ddbde02900d3",
+      "bytes": 2060,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceResultsFlow.cs",
+      "sha256": "8f9eca246ba661429a9b2e0296dbc8c4314dddb011bdfc725f21113432ea53dc",
+      "bytes": 9939,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceResultsPreview.cs",
+      "sha256": "a0840df9df58794c8f6429dec9a58e408685e0b8b4d010540896cc4115ad51a9",
+      "bytes": 7209,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceResultsVerification.cs",
+      "sha256": "853da4d6b835585bd6b5aab71766f2357d38f330627ab8c70096ee22b2e11e45",
+      "bytes": 17633,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceScaledTransformVerification.cs",
+      "sha256": "a8bea8fe70451c28d66df5058d7f7f6aa7a1c4652419cbd6f2a13ddc7482f3b3",
+      "bytes": 13044,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceScoreboardNavigation.cs",
+      "sha256": "156adf4f9cb7deec05c6389a1b679d2268103508816d8ec5b5043f8242e0e335",
+      "bytes": 683,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceScoreboardVerification.cs",
+      "sha256": "ec103210460b63cb2bfe609260e3f99556d666b836edaeaf65d8879653419eb7",
+      "bytes": 11421,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSelectionPreview.cs",
+      "sha256": "b3e46c4de04f93d136014492d1f864689b3ce4d0f7da80bfa7e76eeb8a4e10d3",
+      "bytes": 18709,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSettings.cs",
+      "sha256": "2e7989fd54f0a8c4b2fe67f3606e96725ac7d869b3a9671265453db801446a27",
+      "bytes": 32690,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSettingsFollowupVerification.cs",
+      "sha256": "406c98eeb125f74ab693a18b511b7ab813ce9514498118dabea6c92d7a393b8d",
+      "bytes": 8615,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSettingsIntegerVerification.cs",
+      "sha256": "497674e2956e6cd1c0cbee4478cf79c0edc29a48e0eae7b7764b3595e877ca37",
+      "bytes": 6708,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSettingsPointerVerification.cs",
+      "sha256": "05bc05de2dce6e29125de956d44686a20ed8de712588eb0bbb352a8ff59d3627",
+      "bytes": 31511,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSettingsUiVerification.cs",
+      "sha256": "e1adde06ca3954e6d045f29e45654605f84f6b9cc44bc24b60dd022a218cdf8a",
+      "bytes": 18414,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSourceDiagnosticOwner.cs",
+      "sha256": "452ceff0ba88affcf5c60533267ea21b8ae12e8efdb1bdedfc6cc5bfc520d269",
+      "bytes": 1839,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSourceTime.cs",
+      "sha256": "d633653d89f497f8c04d341a8e34c813fcf6d8826580ed6e77b48bc0b81482e6",
+      "bytes": 6199,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceStartupSplash.cs",
+      "sha256": "189edda1454cad5c574a1d152fd6049803038d2b901f814e3a00fd5cd023c95f",
+      "bytes": 3197,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceStateBridge.cs",
+      "sha256": "21b4051cf57e3b220ec8a8dfe461be32b43657a636fa79147e1952a7a1ab8c68",
+      "bytes": 7539,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceStateFlow.cs",
+      "sha256": "9dab6c038d2e873194a3769df392b87fda0de86bb32d3f3f8aec5219ec5e5909",
+      "bytes": 6826,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceStateNaturalProbe.cs",
+      "sha256": "a15e6f45ec4b833056455053cd6210ee6f38ff813408325b69ca14257820144e",
+      "bytes": 4179,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceStateVerification.cs",
+      "sha256": "6d00115a64b4ed35f1accec8a151164e3dd6ad0424c560afd61d739b420dfd58",
+      "bytes": 11584,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceStructureDiagnostics.cs",
+      "sha256": "9a282cf2d5311e92c2e7a14efa3e24e54774fad6ea29515f85d65cafe77b1f89",
+      "bytes": 9520,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceSynchronousProductionVerification.cs",
+      "sha256": "e72d1ed2a291144763bb37da24c47cc0fe33405da385f12ce077926df3743289",
+      "bytes": 21476,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceTelemetry.cs",
+      "sha256": "bf5961d884f5bbceca69b1e0c516ea79e147a86d7298f6f222a7b198d8209ccb",
+      "bytes": 12032,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceTextSpacingVerification.cs",
+      "sha256": "5391c2b3fdfa0a7c245414bc6803d605235592ffa30643c2391e763292566016",
+      "bytes": 17630,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceVehicleModuleHudVerification.cs",
+      "sha256": "230cc3bc4522fd4217527162417b20479d1b54f9e642d5074fd8cecdc54bce76",
+      "bytes": 24144,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceVisualAudit.cs",
+      "sha256": "8b80af0d2a8a5c4fa880425d0b30ced943267c9784bcdfdfd890a8d6d9585fdb",
+      "bytes": 4830,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceWinterFresh190Verification.cs",
+      "sha256": "ddd4cd41ad975d5fd99dcccee7da47f78285c130687062d67f7f21ce25feeab1",
+      "bytes": 16751,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceWinterLifecycle.cs",
+      "sha256": "986b837bf9ab125b097c69feb4719c2a3a3d66e15e53ce1541eb05297e40a89d",
+      "bytes": 787,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceWinterMutedSettingsVerification.cs",
+      "sha256": "ad0e1b726d2d546d7ac05f69d3d7c25b09446fc3d23b93b1760dbc8db03c51b3",
+      "bytes": 3157,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceWinterRuntimeVerification.cs",
+      "sha256": "5e30dbde480a354aee54c08388ef11e39c975f3e7d643a02a3f99ee5c0957e8a",
+      "bytes": 53697,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRaceWinterSnowmanContactVerification.cs",
+      "sha256": "4416316a6271dcceb314a5459aa1b34f2d0d6f6a249426c747d7cd7c16f06449",
+      "bytes": 48528,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRacingRanking.cs",
+      "sha256": "267e5f8eff4164b35b37d84acb2202f7da1fc76854265f7abdfd47cd7c5119ba",
+      "bytes": 6056,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeReleaseFeatures.cs",
+      "sha256": "45fb5e2478cc45632eafda18843faa69c7f40806229f9666b7f102d6bfa7de26",
+      "bytes": 479,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeRenderingQuality.cs",
+      "sha256": "00875ee55b134260970e010a589a8f017db74cf7e5085ec45a3753313110c758",
+      "bytes": 1741,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeResultsAvatarSet.cs",
+      "sha256": "9ac939c801a702d92df32e46d1b60fee1c2ea0fa54ba6ed5074dc00451607904",
+      "bytes": 6325,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeResultsFlow.cs",
+      "sha256": "142e5c82877bbe427e7dd9d61da2ae58fe48bbc7c81fc548134ab226f24ec664",
+      "bytes": 6189,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeResultsNaturalProbe.cs",
+      "sha256": "69c24e161bcc41d5bf7ddde25155a980026d8d7cd475c6acbffc1b42755f63b3",
+      "bytes": 2804,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeResultsRenderCompatibility.cs",
+      "sha256": "008ba89d74f11fea8da297a1de4fb9e02d1c7a4a045786d11a10331bdf86746e",
+      "bytes": 1496,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSaveData.cs",
+      "sha256": "e5427c26619a58c81f11896ba00b49ac4519bea47dc4aa26713abf36d565ec68",
+      "bytes": 1944,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSaveExchange.cs",
+      "sha256": "aee988e665db4a0c16d889f6c0d1da8417ba0a11fe26cb4eeab3ec7371004ff7",
+      "bytes": 8011,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSaveJson.cs",
+      "sha256": "de71f1c0096c6dffb6faaad54c66044d7798f713f8fd008a9462377b41fd5148",
+      "bytes": 7478,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSaveStore.cs",
+      "sha256": "31b4d83fb798bb7846cbcb616c8d9c763737a6a71e19d45b7aac1aba947abd18",
+      "bytes": 15048,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSaveVerification.cs",
+      "sha256": "6efe1cbb3008ab053b2492a6c134c332cff68ef134112c64793db65761bbd9c6",
+      "bytes": 11674,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSceneSettings.cs",
+      "sha256": "9dcb32fea8d0335e7cf01ff29b6f95ee9b5f3b5b57eceb3a5573b4e839befce4",
+      "bytes": 7654,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSceneSettingsAudioVerification.cs",
+      "sha256": "42f892eef75e9d8e8eee044d5766263cb6c6b1e77b799244c9e13e4ef4bf8401",
+      "bytes": 12757,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSelectionPreviewPlayerDefinition.cs",
+      "sha256": "8bd81ac90daeded45999d5ee5fa3862c80f0d4493c9cca65fe08748090ca7a56",
+      "bytes": 822,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSelectionPreviewSettings.cs",
+      "sha256": "bcf85a8c35eebd16776a2e76b43294966bb8234e49f289c39b9722744e953a98",
+      "bytes": 766,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSessionVerification.cs",
+      "sha256": "6091a326b8ec69b8948aca5bab3c63ad40e1cdb71b8d4a5c2944cf9c2ec061ac",
+      "bytes": 8914,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSettingsSliderNavigation.cs",
+      "sha256": "fe1dd62dcacd02d4a0dd905b954a5e43eb9373b08a8d61cabdb97219c5cd1f07",
+      "bytes": 600,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSettingsVerification.cs",
+      "sha256": "a3fb7b2c2074fe6750557fab0d8a512f185de74648adb34e113ebae8ec0b29c7",
+      "bytes": 10588,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeShaderGlobalsManager.cs",
+      "sha256": "77cacc36adace70afb3152cb4acbbede9e260197a8d1c1a87c5c08fc076cf54c",
+      "bytes": 1293,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeShaderGlobalsOverTime.cs",
+      "sha256": "c3e49fbc62ef4b9b25f05f7d22b768072b26a095488099ce68706bf7a4d8d62b",
+      "bytes": 979,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSnowmanDamageTrigger.cs",
+      "sha256": "fe1177e58021f95c0bf414050486020e78c369b471971e49f82c88e8d3df6e38",
+      "bytes": 955,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSnowmanDestructable.cs",
+      "sha256": "f60ee9bbbcba09056e4c8ae08a01b12384b39545dade5fc50ae068f99902b959",
+      "bytes": 2195,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSourceLapClock.cs",
+      "sha256": "ab24896345611877d54e806aa511c02fd7f2cb13bb493f561027c4b86a42c6fc",
+      "bytes": 274,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSourceLapTimer.cs",
+      "sha256": "4085f5e67c4bcaaeb6b57e215e9f8ecf188488f44b8bedf5508f26ff929e31e2",
+      "bytes": 2538,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSplashAudioProducer.cs",
+      "sha256": "81508f0eb6d18529e9f5fa79e57f8d773c88dd7d56359f6664d1d29295cae50d",
+      "bytes": 7170,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeStaticKartColor.cs",
+      "sha256": "732e16851bf25af118be3c4af708e0c5980e0ad99b2e73a23a91c40cd9d8a71f",
+      "bytes": 1089,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeSurface.shader",
+      "sha256": "926a3cc5b2194cd09483184c7eeaa21a87bfa21a94d89aa2c9e9fe04b141a01b",
+      "bytes": 2345,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeTelemetry.cs",
+      "sha256": "c5d82fd166f8ba975e0b52cd21ecd301b4bc105eb8100f942c55c1034612b5c6",
+      "bytes": 29439,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeTelemetryRuntime.cs",
+      "sha256": "24b0c199e095a9c42ba66395b1437e06b9c4b5ead086ac5f7b84738dda8a1e96",
+      "bytes": 4505,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeTelemetryUpload.cs",
+      "sha256": "75a55c2a5141d50b82d1f00343695adbeda59e2ac7e07ddc2d1ad3bfc6c09e2a",
+      "bytes": 20813,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeTextInputBridge.cs",
+      "sha256": "8aadb065552d8c97539a79d1d2f8662c0f032e0968c336d34a4c0c240854db13",
+      "bytes": 8607,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeTrackContentVerification.cs",
+      "sha256": "e9e0f9b522803b8c4823abd2bb2290b31c8db9ca20376b5a226f437e97092486",
+      "bytes": 13198,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeTrackFallVolume.cs",
+      "sha256": "3105a03f70149ba550d22c0959effb2f9af7c044d2a668ad95312188a1b3b556",
+      "bytes": 1112,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeTrackTeleportVolume.cs",
+      "sha256": "31db5c5ccda3f1623ebef16d86762cf2fd2bbaed4d934a8ab3685261ec8ed0f3",
+      "bytes": 808,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeTreeLodVerification.cs",
+      "sha256": "c5ac7a0e95e60b0f2d06feff0f32573378193569f5c85b0c714b530247587d1a",
+      "bytes": 14347,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUfoBox.cs",
+      "sha256": "0137e235d5063520d1e4068ae3390aa988bdcc227791d0e01181b815fc25417e",
+      "bytes": 4126,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUfoCatalog.cs",
+      "sha256": "dbc99caa356883fc10c475bf47ea7d100f777d966e1e90c909fdddc5639b36c1",
+      "bytes": 900,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUfoHud.cs",
+      "sha256": "2e939a099acd0824f31382537b87fdce5ff036cab7462131a6a653f653cc2cf2",
+      "bytes": 3062,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUfoManager.cs",
+      "sha256": "a6e5c8e300b7a12f5194c9a43242317b8da950ed81f818d9fd4218ea6c48db2d",
+      "bytes": 3517,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUfoPlayer.cs",
+      "sha256": "d9f00a9b75e1fb4dc09723d2d7fb5c4ff66e6de789cfb410c21bc24195f2fb2f",
+      "bytes": 1846,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUfoRules.cs",
+      "sha256": "1d622b3f4fe3379a7ad94fce5f09e68e065ce505082b105f59a32d50d8c82187",
+      "bytes": 2793,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUfoVerification.cs",
+      "sha256": "92d27815c6f0f3c8be1335b389ec7b5ba9cfb70d64e97bae4e7ba078269cb0d2",
+      "bytes": 7342,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUiCanvas.cs",
+      "sha256": "0c66657c878f77b75d1d84dac23073af8068100dd8b48f3c0cc54a33273df159",
+      "bytes": 10323,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUiCanvasOpacity.cs",
+      "sha256": "00ab76033bcba06975216727147594f7a8f95ec171a04afc4fa42a4bf2cabade",
+      "bytes": 326,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUiCanvasSourceAliases.cs",
+      "sha256": "1a583c9761e9fc3c9e0f5e77a8f382712d59253f475d8317341951128bd5b528",
+      "bytes": 4302,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUiDisc.cs",
+      "sha256": "81aa8813b35313435b12851447db79348b381febfe00ea9e4ac08c3552fca049",
+      "bytes": 829,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUiFontData.cs",
+      "sha256": "6690d43818f6aec37123168b9c204650e130555ce33609a04919e0a831af0b1c",
+      "bytes": 10928,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUiSourceIdentity.cs",
+      "sha256": "830f6afc8403c9eddbb7a0e1fab3de9ba5ac697699fc4b7be9ba3d6e2cb607d1",
+      "bytes": 213,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUnlockTrigger.cs",
+      "sha256": "a912e512b360462e14a92f8a495f24e4a0a532319841eff99b4dc0a6242196bf",
+      "bytes": 546,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeUserSettings.cs",
+      "sha256": "5a21db72c86499d02b0387ca2a66665c76c2ab3be55d0a502cb679a85dbaed2b",
+      "bytes": 10792,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeVehicleAudio.cs",
+      "sha256": "d01e3f45ba5a6bd1dd89173d028f428f5257a7bdac69704fc7dff135610e63b9",
+      "bytes": 4456,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeVehicleCoverageVerification.cs",
+      "sha256": "87395f7b41729f0a5bcc08cc405af1df2fabf23265ed979855c0746a99eaec94",
+      "bytes": 23544,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeVehicleModuleEffects.cs",
+      "sha256": "09aa6f2b8b77cf07afa295389cf330c1a9e00b03a5c61d650f0d08790f1e6065",
+      "bytes": 2989,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeVehicleModuleHud.cs",
+      "sha256": "1c9e3a5899d50134e2271d389decf1dcdaf146ee15d985e40d8b7763fdee4176",
+      "bytes": 13461,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeVehicleRoster.cs",
+      "sha256": "f994fc5b4151751796b0b888f83b14a9f31c64af1e7d2f6f9f88b910b7da9e2b",
+      "bytes": 11544,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeVisualParityVerification.cs",
+      "sha256": "048c74dd0930af12d16bef223705a503509cb55c54f3c970b590dcd225f8e9ac",
+      "bytes": 9249,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeVisualVerification.cs",
+      "sha256": "5034e7413898cc3e260858f56af4d81b1d05cb3feb1fc43012b09ecd99b195b5",
+      "bytes": 13374,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeWaterFlow.cs",
+      "sha256": "b403244983d71e4b93072a377236adf2eb7641c088a072a35a3f51c7a56be55d",
+      "bytes": 1334,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/NativeWaterSourceState.cs",
+      "sha256": "ba606cd938fe3960c0eb0b2b786c04acd6d8eb0c094c1aee389458ce6e177766",
+      "bytes": 711,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredKart.shader",
+      "sha256": "4378882bf7d5b3eecbce3fef1756eda6a9da30ab30c2730a7a6aab6e280e21e2",
+      "bytes": 4682,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredLeaves.shader",
+      "sha256": "d08919747ca278cf0d4d848c43f7d2e6dee528954003ba2f0d836f1454f9f5ba",
+      "bytes": 3526,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredLit.shader",
+      "sha256": "2dc39b222abd94f37e0773ec767e051b3a40aa21502c44a2e79ab7dc34f64bdb",
+      "bytes": 3701,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredMoss.shader",
+      "sha256": "2f649d4621c7d81015ae1cff0145274a50eec50e9102455e39eda461a99af4be",
+      "bytes": 3581,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredMountainWater.shader",
+      "sha256": "2aba019bcda325e5034ae8ffcecb504bb955ae6a250c3acd763f6de6e18413b1",
+      "bytes": 6782,
+      "lineage": "nvjob-and-unity-mit-derived"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredPyramid.shader",
+      "sha256": "92a5ad4bbc67a3084d858b19fcc4336fce30079ae1596d7063ac5403a6ac2f72",
+      "bytes": 2314,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredRetroWater.shader",
+      "sha256": "c984a79701ad8756531dc650c15dfa253f57688f37355eb2ad746244a855916a",
+      "bytes": 996,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredSnowSurface.shader",
+      "sha256": "0e0669c15266e3d348c97f15b038bbb6509a55fe4c3f93fe6de78560ef324fc5",
+      "bytes": 3982,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredTransparent.shader",
+      "sha256": "bfeeae03ece626ece0cdfc16f5495a068bef5c91632f354d3a470fabed81ad41",
+      "bytes": 2928,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/RestoredWaterSurface.shader",
+      "sha256": "7ac6238326f626c7570c7478fcbff8305294dd43b8a5a158efbc2bf2b7c255c9",
+      "bytes": 3989,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/UIShaders/LobbySelectionGlow.shader",
+      "sha256": "23bfe1a5baccbfb39c8e44dad94954c44fad81b881f7f615612ab7b93ba263d4",
+      "bytes": 3256,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/UIShaders/TMP_SDF-Glow.shader",
+      "sha256": "d711ce9d08e6bc7f518aa6cff991854f049cedd64137f9a85c01b2e86ef0e6d5",
+      "bytes": 10378,
+      "lineage": "textmeshpro-derived-review-required"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/UIShaders/TMP_SDF-Mobile.shader",
+      "sha256": "2deb01242985c8dec6846576cf0cbb823a85ae4d2333633014ea90d4d83f747a",
+      "bytes": 7848,
+      "lineage": "textmeshpro-derived-review-required"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/UIShaders/TMPro.cginc",
+      "sha256": "14edb7d7b88caf2b82cae68200abe895e5b5b3474c3fffbf0e9b4b09a4e2467e",
+      "bytes": 2277,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/UIShaders/TMPro_Properties.cginc",
+      "sha256": "26c70831a9bdd6a56a37ec1e2358929453d66a064d10a61da49a1d4b05280e06",
+      "bytes": 2843,
+      "lineage": "textmeshpro-derived-review-required"
+    },
+    {
+      "path": "Assets/Scripts/NativePlayable/UIShaders/TMPro_Surface.cginc",
+      "sha256": "2f3ef45c8dde9e1bd478a824c76202a68819d11dc1c0d35d02327609e148aeef",
+      "bytes": 3707,
+      "lineage": "textmeshpro-derived-review-required"
+    },
+    {
+      "path": "Assets/Shaders/GrassShader/Shader/GGG_Shader.shader",
+      "sha256": "f7f4b8725dc36d5cfa0157a19d62490fdd718b4edf1aa61face62bffed03a631",
+      "bytes": 1208,
+      "lineage": "distribution-overlay-authored-source"
+    },
+    {
+      "path": "Assets/Shaders/UI/UIMovingPattern.shader",
+      "sha256": "c848b51414b69d6bf51f583f54e5b50267a97af4619959fe72dfc6fbb219dccb",
+      "bytes": 2286,
+      "lineage": "project-reimplementation-source-owner-authorized"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/SDFFunctions.hlsl",
+      "sha256": "88cf0f62e4000b71750c059d0886b19504cd1cf10f39bb61ddc11b77a882d417",
+      "bytes": 6021,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader",
+      "sha256": "42892a52f22bdde6d482cf2da5f35e4b813063fc6fe42189eee5562080079494",
+      "bytes": 3836,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader",
+      "sha256": "b50afc7edc8a710f8b4159149b2391e7238b5e4076cc0ea2119090ed29e13b4a",
+      "bytes": 4071,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader",
+      "sha256": "1d32f34c71276c1321aa0540a2410e15808743a38b2026923045a4dec4a79b58",
+      "bytes": 3839,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader",
+      "sha256": "a0d318756cba0f95a7052c387e629d0add3e9a4125c8333f1d1ed591af5f17cb",
+      "bytes": 11054,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader",
+      "sha256": "2a991951b00b0c052363a1025f655450054325437b3d13c2623a987c8ec77c30",
+      "bytes": 12438,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader",
+      "sha256": "41cff58473557bf760d03513a8c098f43a24e4eeb4c8ccd7d828c045a338a9ed",
+      "bytes": 8273,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader",
+      "sha256": "fb286386d0592ce6d63eb736f180b4b0f638ec538b0855aa54767a438ebd1173",
+      "bytes": 8081,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader",
+      "sha256": "8b30c140f6af9134392fe6ecf4c0676db73f873489ac52adfb47bbd288cb51b8",
+      "bytes": 3064,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader",
+      "sha256": "4bc2db64befbd0e37e23539f21096ad2fcd9d61b36d2174d208a7d831a0883f7",
+      "bytes": 11795,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader",
+      "sha256": "44c39aabc7e88e7e1feffc1880df754f4adf86b62e9512aa89e9d2d65171aff4",
+      "bytes": 8074,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader",
+      "sha256": "f9fae5906dd37d89298338953294459975de58a5421e68dd9e82a79794b95509",
+      "bytes": 3523,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader",
+      "sha256": "5dadb68b56429547918b392626e9af8fd5173936d20bb43cfca58dfa00947257",
+      "bytes": 4353,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+      "sha256": "10efe6d4728474a09970b857faf37913793e168dc13dbd4d7316b54b37615d97",
+      "bytes": 11027,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_Sprite.shader",
+      "sha256": "af669bb9ae136c8099f8e0a94a6933fd2f1e1fb0a6842129939a319fab4b8dbb",
+      "bytes": 3446,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro.cginc",
+      "sha256": "14edb7d7b88caf2b82cae68200abe895e5b5b3474c3fffbf0e9b4b09a4e2467e",
+      "bytes": 2277,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc",
+      "sha256": "d9d43ddd9810476162f21b42477d9ce2cdc4e6cc7571d354c3253aafc6673ead",
+      "bytes": 5453,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc",
+      "sha256": "66db1f03e8d7a413eba79bcb6602fdb2de710b586f34a6f2584ed6f68f028e90",
+      "bytes": 2707,
+      "lineage": "unity-package-exact-match"
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc",
+      "sha256": "244b442520282a66363d121c8d2aeeb30bb1e72cbbadbf41ce68d9100322ade5",
+      "bytes": 3515,
+      "lineage": "unity-package-exact-match"
+    }
+  ],
+  "notices": [
+    {
+      "path": "ThirdPartyNotices/com.unity.cinemachine/LICENSE.md",
+      "sha256": "d230a6127c9f61f68e34821e6cfb7f2e72a7d1dfe523a5e6da89e37ca5f9fa07",
+      "bytes": 467,
+      "package": "com.unity.cinemachine",
+      "version": "3.1.7"
+    },
+    {
+      "path": "ThirdPartyNotices/com.unity.cinemachine/Third Party Notices.md",
+      "sha256": "b1d297db15dea9d4ba6f6c8487f3469677b1b27e615267092634e6e89c75fb4a",
+      "bytes": 1539,
+      "package": "com.unity.cinemachine",
+      "version": "3.1.7"
+    },
+    {
+      "path": "ThirdPartyNotices/com.unity.test-framework/LICENSE.md",
+      "sha256": "d3b09e9683afbc8d468a83000308f18e7133eaf7879af870747000a66e3c0693",
+      "bytes": 475,
+      "package": "com.unity.test-framework",
+      "version": "1.6.0"
+    },
+    {
+      "path": "ThirdPartyNotices/com.unity.ugui/LICENSE.md",
+      "sha256": "a8e0cae87b2edb8c205ae6c308f20b89a09f32d62bd4a3ff0343bb4724a4201e",
+      "bytes": 457,
+      "package": "com.unity.ugui",
+      "version": "2.0.0"
+    },
+    {
+      "path": "ThirdPartyNotices/com.unity.inputsystem/LICENSE.md",
+      "sha256": "419718e59cd6c1f9c3ed80bd004394504bed368c23ad8665cce1792a33c8a02c",
+      "bytes": 510,
+      "package": "com.unity.inputsystem",
+      "version": "1.14.0"
+    },
+    {
+      "path": "ThirdPartyNotices/com.unity.postprocessing/LICENSE.md",
+      "sha256": "97cfe4fa7afe601adcd526ccd07708a2a435024b818a2e7e7b17a37aabd62f33",
+      "bytes": 484,
+      "package": "com.unity.postprocessing",
+      "version": "3.4.0"
+    },
+    {
+      "path": "ThirdPartyNotices/NVJOB/license_nvjob.txt",
+      "sha256": "01905f8ac5c893f2f8849c44d571828f47b2dd00eec1ee1bef6c6545aabf6bb8",
+      "bytes": 1093,
+      "package": "NVJOB Simple Water Shaders / Unity",
+      "version": "1.6-derived"
+    },
+    {
+      "path": "ThirdPartyNotices/NVJOB/license_unity.txt",
+      "sha256": "9ce7cf0c6902bea1d3919d78c20ef28fb052b545fecace901e4d98e8c2bcf4ce",
+      "bytes": 1062,
+      "package": "NVJOB Simple Water Shaders / Unity",
+      "version": "1.6-derived"
+    }
+  ],
+  "packageManifestSHA256": "2b105c4c7894858edbb378b7f6a69060ef2c600abf424da874cffd2b7032e30a",
+  "metadataFiles": [
+    {
+      "path": "README.md",
+      "sha256": "a9869df64e2f7d3b2cac98e0e8c10dffbc5bd28ec078fb1c0a2c6788fe3828e4",
+      "bytes": 880
+    },
+    {
+      "path": "Packages/manifest.json",
+      "sha256": "2b105c4c7894858edbb378b7f6a69060ef2c600abf424da874cffd2b7032e30a",
+      "bytes": 903
+    }
+  ]
+}

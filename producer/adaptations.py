@@ -8,6 +8,17 @@ LIGHTING_MAP_FIELDS = frozenset({"indices", "probeOcclusionIndices", "occlusionM
                                 "bakeTypes", "mixedLightingModes", "isBaked"})
 
 
+def transparent_unused_texture(body):
+    """Replace an explicitly reviewed, unused sample atlas with new empty data."""
+    body = deepcopy(body)
+    body.update(m_Width=1, m_Height=1, m_CompleteImageSize=4, m_TextureFormat=4,
+                m_MipCount=1, m_IsReadable=False, m_ImageCount=1, m_TextureDimension=2,
+                m_StreamingMipmaps=False, m_StreamingMipmapsPriority=0)
+    body["m_StreamData"] = {"offset": 0, "size": 0, "path": ""}
+    body["image data"] = bytes(4)
+    return body
+
+
 def script_class(reader, body):
     if reader.type.name != "MonoBehaviour":
         return None
@@ -34,7 +45,7 @@ def encode_component(index, reader, body, context, unmatched):
     rule. The original resource objects still require their normal source proof.
     """
     name = script_class(reader, body)
-    if name not in ("NativeMenuPostProcessingSource", "NativeBroadcastAuthoredCamera", "NativeBakedLighting", "NativeMenuPresentation"):
+    if name not in ("NativeMenuPostProcessingSource", "NativeBroadcastAuthoredCamera", "NativeBakedLighting", "NativeMenuPresentation", "NativeCeremonyView"):
         return None
     body = deepcopy(body)
     evidence = []
@@ -48,7 +59,9 @@ def encode_component(index, reader, body, context, unmatched):
         if name == "NativeBroadcastAuthoredCamera" and key in ("rawFlightSamples", "rawFlightTimes"):
             owner = "authored-camera-recording:NativeCameraLab"
             evidence.append("NativeCameraLab recording field: " + key)
-        structural = name == "NativeBakedLighting" and key in LIGHTING_MAP_FIELDS or name == "NativeMenuPresentation" and key == "raceLightEnabled"
+        structural = (name == "NativeBakedLighting" and key in LIGHTING_MAP_FIELDS
+                      or name == "NativeMenuPresentation" and key == "raceLightEnabled"
+                      or name == "NativeCeremonyView" and key == "lightmapIndices")
         if structural:
             if not isinstance(value, list) or len(value) > 100000 or any(not isinstance(x, (int, bool)) or not -1 <= x <= 65535 for x in value):
                 raise ValueError("Unexpected nonstructural lighting metadata: " + context + "/" + key)

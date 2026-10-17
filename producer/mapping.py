@@ -186,11 +186,18 @@ def asset_signatures(reader, *, decoded_texture=False) -> dict[str, str]:
                     found["texture-pixels"] = digest([list(image.size), image.tobytes()])
                 except (ValueError, NotImplementedError):
                     return found
+                import numpy as np
+                rgba = np.asarray(image)
+                transparent = rgba[:, :, 3] == 0
+                if np.any(transparent) and not np.all(transparent):
+                    # Sprite import may dilate RGB under alpha=0. Preserve
+                    # every visible pixel and every alpha value in the proof.
+                    visible = rgba.copy()
+                    visible[transparent] = 0
+                    found["texture-visible-pixels"] = digest([list(image.size), visible.tobytes()])
                 if body["m_TextureFormat"] in {12, 29}:
                     # DXT5nm stores normal X in alpha and Y in green. The
                     # exporter reconstructs positive Z when writing a PNG.
-                    import numpy as np
-                    rgba = np.asarray(image)
                     if np.all(rgba[:, :, 0] == 255):
                         x = rgba[:, :, 3].astype(np.float32) / 255 * 2 - 1
                         y = rgba[:, :, 1].astype(np.float32) / 255 * 2 - 1
@@ -238,7 +245,8 @@ def asset_signatures(reader, *, decoded_texture=False) -> dict[str, str]:
         for key in ("texture", "alphaTexture"):
             texture = _pointer(reader, render.get(key, {"m_PathID": 0}))
             if texture is not None:
-                proof = asset_signatures(texture, decoded_texture=True).get("texture-pixels")
+                signatures = asset_signatures(texture, decoded_texture=True)
+                proof = signatures.get("texture-visible-pixels", signatures.get("texture-pixels"))
                 if proof is None:
                     raise ValueError("Sprite texture has no image evidence")
                 textures[key] = proof
@@ -289,6 +297,7 @@ class Match:
     equivalent_sources: list[list] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
     details: dict = field(default_factory=dict)
+    adaptation: dict | None = None
 
     def as_dict(self):
         return asdict(self)
@@ -367,6 +376,13 @@ class SourceObjectIndex:
         if typ not in SUPPORTED_TYPES:
             result.status = "unsupported"
             return result
+        if typ == "AnimationClip":
+            return self.animation_stream_source(target)
+        if typ == "Sprite":
+            adapted = self.sprite_geometry_source(target)
+            if adapted.status == "source-geometry-proved":
+                adapted.status = "matched"
+                return adapted
         proofs = {}
         try:
             proofs.update(asset_signatures(target, decoded_texture=typ == "Texture2D"))
@@ -457,6 +473,7 @@ class SourceObjectIndex:
         The original FSB, not this decoded/exported file, is used by the recipe.
         """
         import io
+        import json
         import subprocess
         import wave
         import numpy as np
@@ -464,6 +481,13 @@ class SourceObjectIndex:
         td = target.read_typetree()
         channels, rate = td["m_Channels"], td["m_Frequency"]
         if exported_asset.suffix.lower() not in {".ogg", ".wav"}:
+            return result
+        probe = subprocess.run([str(ffmpeg.with_name("ffprobe")), "-v", "error",
+                                "-select_streams", "a:0", "-show_entries", "stream=sample_rate,channels",
+                                "-of", "json", str(exported_asset)], check=True, capture_output=True)
+        streams = json.loads(probe.stdout)["streams"]
+        if len(streams) != 1 or (int(streams[0]["sample_rate"]), streams[0]["channels"]) != (rate, channels):
+            result.errors.append("Export audio format differs; resampling is not an identification proof")
             return result
         decoded = subprocess.run([str(ffmpeg), "-v", "error", "-i", str(exported_asset),
                                   "-f", "s16le", "-acodec", "pcm_s16le", "-"],
@@ -519,3 +543,97 @@ class SourceObjectIndex:
                 "duplicate_names": {typ: sum(1 for (kind, _), items in self.by_name.items()
                                                 if kind == typ and len(items) > 1)
                                     for typ in sorted(self.by_type)}}
+
+    def sprite_geometry_source(self, target) -> Match:
+        """Find an original contour source with explicit texture/region evidence.
+
+        This authorizes a source-geometry replacement, not an assertion that a
+        newly triangulated reference outline is byte-identical. The private audit
+        must retain this distinction, and the resulting package needs UI checks.
+        """
+        from content_importer.sprite_geometry import original_sprite_geometry
+        result = Match("unmatched", "Sprite", name_of(target))
+        body = target.read_typetree()
+        if body.get("m_Bones") or body.get("m_IsPolygon") or body["m_RD"]["settingsRaw"] not in (0, 64):
+            return result
+        texture = _pointer(target, body["m_RD"]["texture"])
+        if texture is None or _pointer(target, body["m_RD"].get("alphaTexture", {"m_PathID": 0})) is not None:
+            return result
+        target_signature = self.signatures(texture, pixels=True)
+        proofs = []
+        for source in self.by_name[("Sprite", result.name)]:
+            original = source.read_typetree()
+            render = original["m_RD"]
+            source_texture = _pointer(source, render["texture"])
+            if source_texture is None or _pointer(source, render.get("alphaTexture", {"m_PathID": 0})) is not None:
+                continue
+            signature = self.signatures(source_texture, pixels=True)
+            content = [kind for kind in ("texture-encoded", "texture-pixels", "texture-visible-pixels")
+                       if kind in signature and signature[kind] == target_signature.get(kind)]
+            if not content:
+                continue
+            source_rect, target_rect = original["m_Rect"], body["m_Rect"]
+            if any(target_rect[axis] < source_rect[axis] - 0.05 or
+                   target_rect[axis] + target_rect[size] > source_rect[axis] + source_rect[size] + 0.05
+                   for axis, size in (("x", "width"), ("y", "height"))):
+                continue
+            try:
+                geometry = original_sprite_geometry(source, body["m_RD"]["uvTransform"])
+            except ValueError as exc:
+                result.errors.append(f"{self.locator(source)}: {exc}")
+                continue
+            proofs.append((source, content, geometry))
+        result.candidates = [self.locator(source) for source, _, _ in proofs]
+        if not proofs:
+            return result
+        if len({digest(geometry) for _, _, geometry in proofs}) > 1:
+            result.status = "ambiguous"
+            return result
+        proofs.sort(key=lambda item: tuple(str(part) for part in self.locator(item[0])))
+        source, content, geometry = proofs[0]
+        result.status, result.source = "source-geometry-proved", self.locator(source)
+        result.equivalent_sources = [self.locator(item[0]) for item in proofs[1:]]
+        result.proof = ["same-sprite-name", "source-rect-covers-target", *content]
+        result.details = {"operation": "original-sprite-geometry", "referenceOutlineMayDiffer": True,
+            "vertices": geometry["vertexData"]["m_VertexCount"],
+            "indexBytes": len(geometry["indexBuffer"]),
+            "referenceVertexBytesEqual": geometry["vertexData"]["m_DataSize"] == bytes(body["m_RD"]["m_VertexData"]["m_DataSize"]),
+            "referenceIndexBytesEqual": geometry["indexBuffer"] == bytes(body["m_RD"]["m_IndexBuffer"])}
+        result.adaptation = {"kind": "sprite-source-geometry", "targetUVField": ["m_RD", "uvTransform"],
+            "targetFields": {"vertexData": ["m_RD", "m_VertexData"], "indexBuffer": ["m_RD", "m_IndexBuffer"],
+                             "subMeshes": ["m_RD", "m_SubMeshes"], "physicsShape": ["m_PhysicsShape"]},
+            "preserveTargetEmptyPhysicsShape": True}
+        return result
+
+    def animation_stream_source(self, target) -> Match:
+        from producer.animation_streams import prove_stream_replacement, prove_stream_remapping, prove_dense_padding, STREAM_PATH
+        result = Match("unmatched", "AnimationClip", name_of(target))
+        matches = []
+        for source in self.by_type["AnimationClip"]:
+            try:
+                proof = prove_stream_replacement(source, target)
+            except ValueError:
+                proof = None
+            if proof is None:
+                proof = prove_stream_remapping(source, target)
+            if proof is not None:
+                matches.append((source, proof))
+        named = [(source, proof) for source, proof in matches if name_of(source) == result.name]
+        if named:
+            matches = named
+        result.candidates = [self.locator(source) for source, _ in matches]
+        if len(matches) != 1:
+            if matches:
+                result.status = "ambiguous"
+            return result
+        source, proof = matches[0]
+        result.status, result.source = "matched", self.locator(source)
+        result.proof = ["animation-bindings-times-indices-values-slopes-exact", "cubic-trajectory-bound"]
+        result.details = proof
+        result.adaptation = {"kind": "animation-stream-source", "sourceField": STREAM_PATH, "targetField": STREAM_PATH, **proof}
+        if "permutation" in proof:
+            result.adaptation["kind"] = "animation-stream-remap"
+        dense = prove_dense_padding(source, target)
+        if dense:
+            result.adaptation["densePadding"] = dense
+        return result

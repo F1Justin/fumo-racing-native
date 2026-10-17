@@ -44,6 +44,19 @@ def sha(path):
     return value.hexdigest()
 
 
+def minimum_macos(path):
+    if sys.platform != "darwin":
+        return None
+    result = subprocess.run(["/usr/bin/otool", "-l", str(path)], capture_output=True, text=True)
+    versions = re.findall(r"\bminos\s+([0-9.]+)", result.stdout)
+    versions += re.findall(r"cmd LC_VERSION_MIN_MACOSX\s+cmdsize \d+\s+version ([0-9.]+)", result.stdout)
+    return max(versions, key=lambda item: tuple(map(int, item.split(".")))) if versions else None
+
+
+def source_hashes():
+    return {str(path.relative_to(ROOT)): sha(path) for path in sorted((ROOT/"content_importer").glob("*.py"))}
+
+
 def smoke(binary: Path):
     with tempfile.TemporaryDirectory(prefix="fumo-frozen-smoke-") as temporary:
         work = Path(temporary)
@@ -72,6 +85,7 @@ def main():
     if output.exists():
         parser.error("Choose a new output directory")
     check_requirements(ROOT/"requirements-build.txt")
+    sources_before = source_hashes()
     output.mkdir(parents=True)
     with tempfile.TemporaryDirectory(prefix="fumo-freeze-work-") as temporary:
         work = Path(temporary)
@@ -102,22 +116,33 @@ def main():
                     if source_path.is_file():
                         record["sha256"] = sha(source_path)
                         record["bytes"] = source_path.stat().st_size
+                        if kind in {"BINARY", "EXTENSION"} and sys.platform == "darwin":
+                            record["minimumMacOS"] = minimum_macos(source_path)
                     entries.append(record)
                 else:
                     for child in value:
                         walk(child)
         walk(toc)
     binary = output/("content-importer.exe" if sys.platform == "win32" else "content-importer")
+    if source_hashes() != sources_before:
+        raise RuntimeError("Importer sources changed during freezing; rerun from a stable source snapshot")
     result = smoke(binary)
     inventory_tool = ROOT.parent/"publish"/"license_inventory.py"
     subprocess.run([sys.executable, str(inventory_tool), "--output", str(output/"THIRD-PARTY-LICENSES")], check=True)
     report = {"schemaVersion": 1, "platform": platform.system(), "architecture": platform.machine(),
               "pythonVersion": sys.version.split()[0], "pyinstallerVersion": metadata.version("PyInstaller"),
               "binary": {"file": binary.name, "bytes": binary.stat().st_size, "sha256": sha(binary)},
-              "sourceFiles": {str(path.relative_to(ROOT)): sha(path) for path in sorted((ROOT/"content_importer").glob("*.py"))},
+              "sourceFiles": sources_before,
               "freezeInputs": sorted(entries, key=lambda row: (row["name"], row["kind"])), "smoke": result,
               "originalAssetsAdded": False, "fmodSDKBundled": False,
               "publicDistributionAccepted": False, "fullReconstructionVerified": False}
+    license_root = output/"THIRD-PARTY-LICENSES"
+    report["licenseFiles"] = {path.relative_to(license_root).as_posix(): {"sha256": sha(path), "bytes": path.stat().st_size}
+                              for path in sorted(license_root.rglob("*")) if path.is_file()}
+    if sys.platform == "darwin":
+        versions = [row["minimumMacOS"] for row in entries if row.get("minimumMacOS")]
+        versions.append(minimum_macos(binary))
+        report["minimumMacOS"] = max(filter(None, versions), key=lambda value: tuple(map(int, value.split("."))))
     (output/"importer-build-receipt.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     print(json.dumps({"binary": str(binary), "bytes": binary.stat().st_size, "smoke": result,
                       "publicDistributionAccepted": False}, ensure_ascii=False))

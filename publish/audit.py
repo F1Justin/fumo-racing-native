@@ -15,7 +15,7 @@ FORBIDDEN_COMPONENTS = {".git", ".private", ".aws", ".ssh", ".codex", ".agents",
                         "assetripper", "assets", "library", "temp", "obj", "logs", "players", "original", "originals", "verified-original"}
 FORBIDDEN_NAMES = {"release.seed", "auth.json", "credentials.json", "source-inputs.private.json", "source-asset-index.json",
                    "producer-receipt.json", ".env", "globalgamemanagers.original"}
-SOURCE_SUFFIXES = {".py", ".go", ".m", ".cs", ".shader", ".cginc", ".hlsl", ".html", ".md", ".txt", ".json", ".yml", ".yaml", ".mod", ".sum"}
+SOURCE_SUFFIXES = {".py", ".go", ".m", ".cs", ".shader", ".cginc", ".hlsl", ".compute", ".asmdef", ".asmref", ".html", ".md", ".txt", ".json", ".yml", ".yaml", ".mod", ".sum"}
 SECRET_PATTERNS = [
     re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----"),
     re.compile(rb"\bgh[pousr]_[A-Za-z0-9]{36,}\b"),
@@ -30,7 +30,7 @@ class AuditFailure(ValueError):
     pass
 
 
-def safe_name(name: str):
+def safe_name(name: str, *, runtime_names=frozenset()):
     if not isinstance(name, str) or not name or "\\" in name or "\x00" in name or name.startswith("/"):
         raise AuditFailure("Unsafe path in export")
     path = PurePosixPath(name)
@@ -38,7 +38,8 @@ def safe_name(name: str):
         raise AuditFailure("Unsafe path in export: " + name)
     for part in path.parts:
         lower = part.casefold()
-        if lower in FORBIDDEN_COMPONENTS or lower in FORBIDDEN_NAMES or lower.endswith(".private.json") or lower.startswith(".env."):
+        if ((lower in FORBIDDEN_COMPONENTS and not (lower == "assets" and name in runtime_names))
+                or lower in FORBIDDEN_NAMES or lower.endswith(".private.json") or lower.startswith(".env.")):
             raise AuditFailure("Private or original-content path rejected: " + name)
         if lower.endswith((".p12", ".pfx", ".key", ".pem", ".seed")):
             raise AuditFailure("Credential/signing file rejected: " + name)
@@ -96,15 +97,21 @@ def inspect_zip(path: Path):
                     inspect_stream(stream, name)
 
 
-def audit_tree(root: Path, mode="source", review=None):
+def audit_tree(root: Path, mode="source", review=None, runtime_source=None):
     root = root.resolve()
     if not root.is_dir():
         raise AuditFailure("Audit root must be a directory")
     files = {}
     seen = set()
+    runtime_names, runtime_report = set(), None
+    if runtime_source:
+        if mode != "source":
+            raise AuditFailure("Runtime source exception applies only to source audit")
+        from runtime_source import validate
+        runtime_names, runtime_report = validate(root, runtime_source, AuditFailure)
     for path in sorted(root.rglob("*")):
         name = path.relative_to(root).as_posix()
-        safe_name(name)
+        safe_name(name, runtime_names=runtime_names)
         if path.is_symlink():
             raise AuditFailure("Filesystem symlinks are not accepted by this packaging audit: " + name)
         if path.is_dir():
@@ -113,7 +120,7 @@ def audit_tree(root: Path, mode="source", review=None):
             raise AuditFailure("Unexpected or duplicate file: " + name)
         seen.add(name.casefold())
         if mode == "source":
-            if path.suffix.casefold() not in SOURCE_SUFFIXES and path.name != ".gitignore":
+            if path.suffix.casefold() not in SOURCE_SUFFIXES and path.name != ".gitignore" and not (name in runtime_names and path.suffix == ""):
                 raise AuditFailure("Non-source file rejected: " + name)
             if path.stat().st_size > 2 * 1024**2:
                 raise AuditFailure("Source file exceeds size bound: " + name)
@@ -135,7 +142,7 @@ def audit_tree(root: Path, mode="source", review=None):
     if mode == "release":
         validate_review(review, files)
     canonical = json.dumps(files, sort_keys=True, separators=(",", ":")).encode()
-    return {"schemaVersion": 1, "mode": mode, "structuralAuditPassed": True,
+    return {"schemaVersion": 1, "mode": mode, "structuralAuditPassed": True, "runtimeSource": runtime_report,
             "publicDistributionAccepted": mode == "release", "files": files,
             "treeSHA256": hashlib.sha256(canonical).hexdigest(),
             "limits": "Structural/secret/path and explicit review checks; not an independent copyright or semantic resource assessment."}
@@ -167,11 +174,12 @@ def main():
     parser.add_argument("root", type=Path)
     parser.add_argument("--mode", choices=["source", "release"], default="source")
     parser.add_argument("--review", type=Path)
+    parser.add_argument("--runtime-source", help="Relative directory with an exact runtime source manifest")
     parser.add_argument("--report", type=Path, help="Keep outside audited root")
     args = parser.parse_args()
     try:
         review = json.loads(args.review.read_text()) if args.review else None
-        report = audit_tree(args.root, args.mode, review)
+        report = audit_tree(args.root, args.mode, review, args.runtime_source)
         data = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
         if args.report:
             if args.root.resolve() in args.report.resolve().parents:

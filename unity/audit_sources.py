@@ -19,6 +19,13 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def location(path):
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def normalized(data):
     # Diagnostic only: ignore whitespace/comments to detect trivial unchanged copies.
     text = data.decode('utf-8', errors='replace')
@@ -38,7 +45,7 @@ def package_shader_sources():
                 path = package.extractfile(member).read().decode().strip()
                 asset = members.get(name.rsplit('/', 1)[0] + '/asset')
                 if asset and Path(path).suffix in EXTENSIONS:
-                    exact[digest(package.extractfile(asset).read())].append({'package': str(archive.relative_to(ROOT)), 'path': path})
+                    exact[digest(package.extractfile(asset).read())].append({'package': location(archive), 'path': path})
     return exact
 
 
@@ -47,8 +54,8 @@ def scan(project):
     stripped = defaultdict(list)
     for path in ORIGINAL.rglob('*.cs'):
         data = path.read_bytes()
-        original[digest(data)].append(str(path.relative_to(ROOT)))
-        stripped[normalized(data)].append(str(path.relative_to(ROOT)))
+        original[digest(data)].append(location(path))
+        stripped[normalized(data)].append(location(path))
     third_party = package_shader_sources()
     rows = []
     for path in sorted((project / 'Assets').rglob('*')):
@@ -96,13 +103,14 @@ def scan(project):
             row['shaderName'] = shader.group(1)
         rows.append(row)
     packages = []
-    for path in sorted((ACTIVE / 'Library/PackageCache').glob('*/package.json')):
+    package_paths = list((ACTIVE / 'Library/PackageCache').glob('*/package.json')) + list((ACTIVE / 'Packages').glob('*/package.json'))
+    for path in sorted(package_paths):
         data = json.loads(path.read_text())
         if data.get('name') not in json.loads((project / 'Packages/manifest.json').read_text()).get('dependencies', {}):
             continue
         licenses = list(path.parent.glob('LICENSE*')) + list(path.parent.glob('Third Party Notices*'))
         packages.append({'name': data.get('name'), 'version': data.get('version'), 'licenses': [
-            {'path': str(p.relative_to(ROOT)), 'sha256': digest(p.read_bytes())} for p in licenses if p.is_file() and p.suffix != '.meta']})
+            {'path': location(p), 'sha256': digest(p.read_bytes())} for p in licenses if p.is_file() and p.suffix != '.meta']})
     return {'schema': 1, 'scope': 'PRIVATE source review evidence', 'project': str(project),
             'sourceProvenanceReviewed': False, 'publicDistributionAccepted': False,
             'summary': {'sourceFiles': len(rows), 'lineages': dict(Counter(r['lineage'] for r in rows)),
@@ -115,10 +123,17 @@ def scan(project):
 
 
 def main():
+    global ACTIVE, ORIGINAL
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--project', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--authoring-project', type=Path, default=ACTIVE)
+    parser.add_argument('--original-scripts', type=Path, default=ORIGINAL)
     args = parser.parse_args()
+    ACTIVE = args.authoring_project.resolve()
+    ORIGINAL = args.original_scripts.resolve()
+    if not (ACTIVE / 'Library/PackageCache').is_dir() or not any(ORIGINAL.rglob('*.cs')):
+        parser.error('Source audit needs the private authoring PackageCache and original script comparison inputs')
     report = scan(args.project.resolve())
     args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report['summary'], indent=2))

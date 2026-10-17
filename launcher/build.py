@@ -9,9 +9,13 @@ import plistlib
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 
 ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT.parent / "publish"))
+from package_payload import file_identity, validate_recipe_dir
+from audit import safe_name
 TARGETS = {"macos-arm64": ("darwin", "arm64"), "macos-amd64": ("darwin", "amd64"),
            "windows-amd64": ("windows", "amd64"), "linux-amd64": ("linux", "amd64")}
 
@@ -33,15 +37,31 @@ def main():
     parser.add_argument("--target", choices=["all", *TARGETS], default="all")
     parser.add_argument("--output", type=Path, default=ROOT / "dist")
     parser.add_argument("--importer", type=Path, help="Frozen content-importer for the selected target")
-    parser.add_argument("--recipe", type=Path, help="Reviewed recipe JSON for this release")
+    recipe_options = parser.add_mutually_exclusive_group()
+    recipe_options.add_argument("--recipe-dir", type=Path, help="Complete ready installation payload directory")
+    recipe_options.add_argument("--recipe", type=Path, help="Compatibility alias: recipe.json in the complete payload directory")
     parser.add_argument("--version", default="0.1.0")
     args = parser.parse_args()
-    if bool(args.importer) != bool(args.recipe):
-        parser.error("--importer and --recipe must be supplied together")
+    recipe_directory = args.recipe_dir or (args.recipe.parent if args.recipe else None)
+    if args.recipe and args.recipe.name != "recipe.json":
+        parser.error("--recipe must point to recipe.json; prefer --recipe-dir")
+    if bool(args.importer) != bool(recipe_directory):
+        parser.error("--importer and --recipe-dir must be supplied together")
     if args.importer and args.target == "all":
         parser.error("Choose one target when bundling a platform-specific importer")
-    if args.recipe:
-        json.loads(args.recipe.read_text(encoding="utf-8"))
+    recipe_payload = validate_recipe_dir(recipe_directory, require_ready=True) if recipe_directory else None
+    importer_report = None
+    if args.importer:
+        importer_report = json.loads((args.importer.parent / "importer-build-receipt.json").read_text())
+        if importer_report["binary"]["sha256"] != digest(args.importer):
+            parser.error("Importer does not match its build receipt")
+        expected_os, expected_arch = TARGETS[args.target]
+        if importer_report["platform"] != {"darwin": "Darwin", "windows": "Windows", "linux": "Linux"}[expected_os]:
+            parser.error("Importer was built for a different operating system")
+        if importer_report["architecture"].lower() not in ({"arm64", "aarch64"} if expected_arch == "arm64" else {"x86_64", "amd64"}):
+            parser.error("Importer was built for a different CPU architecture")
+        if recipe_payload["platform"] != {"darwin": "macos", "windows": "windows", "linux": "linux"}[expected_os]:
+            parser.error("Installation payload was built for a different platform")
     if not args.version or any(c not in "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-" for c in args.version):
         parser.error("Invalid version")
     output = args.output.resolve()
@@ -78,13 +98,41 @@ def main():
         if args.importer:
             shutil.copyfile(args.importer.resolve(), importer_target)
             importer_target.chmod(0o755)
-            shutil.copyfile(args.recipe.resolve(), recipe_target)
+            for name in ["recipe.json", *[row["file"] for row in recipe_payload["files"]]]:
+                destination = recipe_target.parent / name
+                if destination.exists():
+                    raise ValueError("Installation file collides with launcher package: " + name)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(recipe_directory / name, destination)
+            for row in recipe_payload["files"]:
+                if file_identity(recipe_target.parent / row["file"]) != {"sha256": row["sha256"], "bytes": row["bytes"]}:
+                    raise ValueError("Installation payload changed during packaging")
+            licenses = args.importer.parent / "THIRD-PARTY-LICENSES"
+            if not licenses.is_dir():
+                raise ValueError("Importer package is missing third-party license notices")
+            expected_notices = importer_report.get("licenseFiles")
+            actual_notices = {}
+            for notice in licenses.rglob("*"):
+                name = notice.relative_to(licenses).as_posix()
+                safe_name(name)
+                if notice.is_symlink():
+                    raise ValueError("Importer notices contain a symlink")
+                if notice.is_file():
+                    actual_notices[name] = file_identity(notice)
+            if not expected_notices or expected_notices != actual_notices:
+                raise ValueError("Importer license notices differ from its build receipt")
+            shutil.copytree(licenses, package / "THIRD-PARTY-LICENSES")
+            shutil.copyfile(args.importer.parent / "importer-build-receipt.json", package / "importer-build-receipt.json")
         if app:
             # Respect the actual Go toolchain's deployment target, instead of
             # advertising the older AppKit host's target for the whole product.
             minimums = re.findall(r"\bminos\s+([0-9.]+)", subprocess.check_output(["/usr/bin/otool", "-l", str(engine)], text=True))
             if not minimums:
                 raise ValueError("Cannot determine the Go engine's minimum macOS version")
+            if importer_report:
+                if not importer_report.get("minimumMacOS"):
+                    raise ValueError("Importer receipt is missing its embedded dependencies' minimum macOS version")
+                minimums.append(importer_report["minimumMacOS"])
             minimum_macos = max(minimums, key=lambda value: tuple(map(int, value.split("."))))
             host = binary_dir / "FumoLauncher"
             run(["/usr/bin/clang", "-fobjc-arc", "-mmacosx-version-min=" + minimum_macos, "-arch", "arm64" if arch == "arm64" else "x86_64",
@@ -115,7 +163,7 @@ def main():
             notice += "\n这是开发测试用窗口骨架，未附导入器和安装说明数据，不能安装游戏。\n"
         (package / "START-HERE.txt").write_text(notice, encoding="utf-8")
         report = {"schemaVersion": 1, "target": target, "version": args.version,
-                  "importerBundled": bool(args.importer), "recipeBundled": bool(args.recipe),
+                  "importerBundled": bool(args.importer), "recipeBundled": bool(recipe_directory),
                   "originalGameAssetsBundled": False, "signing": "local-ad-hoc" if app else "unsigned",
                   "notarized": False, "publicDistributionAccepted": False,
                   "realGameTested": False, "files": {}}

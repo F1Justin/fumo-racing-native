@@ -92,6 +92,10 @@ class SourceIndex:
         fingerprint(value, remember)
 
     def encode(self, value, *, owner=None, context="", unmatched=None):
+        if owner and context.rsplit("/", 1)[-1] in ("m_FontData", "compressedBlob") and isinstance(value, list):
+            if any(type(byte) is not int or not 0 <= byte <= 255 for byte in value):
+                raise ValueError("Font data is not a byte array")
+            return ["b", base64.b64encode(bytes(value)).decode("ascii"), "approved:" + owner]
         key, size = fingerprint(value)
         source = self.fields.get(key)
         if source:

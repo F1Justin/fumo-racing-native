@@ -2,11 +2,12 @@
 from __future__ import annotations
 
 import json
+from collections import OrderedDict
 from pathlib import Path
 from types import SimpleNamespace
 
 from .expressions import Evaluator
-from .files import ImportFailure, relative_name, sha256
+from .files import InvalidPackage as ImportFailure, relative_name, sha256
 from .unity_codecs import prepare_conversion, apply_conversion
 from .templates import neutral
 
@@ -34,6 +35,7 @@ def rebuild_bundle(recipe, spec, originals, locators, destination: Path, progres
         raise ImportFailure("结构模板包含原始资源内容。")
     evaluator = Evaluator(originals, locators)
     streams = {}
+    decoded_meshes = OrderedDict()
     done = set()
     with recipe.file(spec["objects"]).open(encoding="utf-8") as instructions:
         for line in instructions:
@@ -76,6 +78,36 @@ def rebuild_bundle(recipe, spec, originals, locators, destination: Path, progres
                     # crash and invalid Texture2D.GetPixels32 in the fixture).
                     # Inline bodies passed the real Unity load/readback check.
                     apply_conversion(target, converted)
+            elif "sprite" in entry:
+                from .sprite_geometry import original_sprite_geometry
+                conversion = entry["sprite"]
+                source_index = conversion["source"]
+                if type(source_index) is not int or not 0 <= source_index < len(locators):
+                    raise ImportFailure("Sprite conversion source is invalid.")
+                body = evaluator.evaluate(conversion["schema"])
+                geometry = original_sprite_geometry(originals.reader(locators[source_index]), body["m_RD"]["uvTransform"])
+                body["m_RD"]["m_VertexData"] = geometry["vertexData"]
+                body["m_RD"]["m_IndexBuffer"] = geometry["indexBuffer"]
+                body["m_RD"]["m_SubMeshes"] = geometry["subMeshes"]
+                body["m_PhysicsShape"] = [] if conversion.get("keepEmptyPhysicsShape") else geometry["physicsShape"]
+                evaluator.source_reads += 1
+                target.save_typetree(body)
+            elif "grass" in entry:
+                from .grass import decode_mesh, generate_grass
+                grass = entry["grass"]
+                source_index = grass["source"]
+                if type(source_index) is not int or not 0 <= source_index < len(locators):
+                    raise ImportFailure("草地资源来源无效。")
+                source = originals.reader(locators[source_index])
+                if source_index not in decoded_meshes:
+                    decoded_meshes[source_index] = decode_mesh(source)
+                    while len(decoded_meshes) > 16:
+                        decoded_meshes.popitem(last=False)
+                decoded_meshes.move_to_end(source_index)
+                body = generate_grass(source, evaluator.evaluate(grass["schema"]), grass["vertices"],
+                                      grass["boundsPadding"], decoded=decoded_meshes[source_index])
+                evaluator.source_reads += 1
+                target.save_typetree(body)
             else:
                 raise ImportFailure("对象配方缺少重建步骤。")
             done.add(key)
@@ -97,9 +129,16 @@ def rebuild_content(recipe, originals, destination: Path, progress):
     destination.mkdir(parents=True, exist_ok=False)
     locators = json.loads(recipe.file(recipe.data["sourceObjects"]).read_text())
     results = []
-    for spec in recipe.data["bundles"]:
+    specs = recipe.data["bundles"]
+    for index, spec in enumerate(specs):
         name = relative_name(spec["output"])
-        results.append(rebuild_bundle(recipe, spec, originals, locators, destination / name, progress))
+        def bundle_progress(phase, completed, total, message):
+            overall = index * 1000 + min(999, completed * 1000 // max(1, total))
+            progress(phase, overall, len(specs) * 1000,
+                     "正在生成游戏内容（%s/%s）…" % (index + 1, len(specs)))
+        results.append(rebuild_bundle(recipe, spec, originals, locators, destination / name, bundle_progress))
+        progress("rebuild", (index + 1) * 1000, len(specs) * 1000,
+                 "正在生成游戏内容（%s/%s）…" % (index + 1, len(specs)))
     catalog_source = recipe.file(recipe.data["catalog"])
     catalog = destination / "catalog.json"
     catalog.write_bytes(catalog_source.read_bytes())

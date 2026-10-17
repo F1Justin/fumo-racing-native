@@ -19,14 +19,15 @@ namespace Fumo.NativePlayable
             }
             catch (Exception exception)
             {
-                error = exception.Message;
-                Debug.LogError("FUMO_CONTENT_INSTALL_REQUIRED " + error);
+                error = "无法加载游戏内容。请打开启动器，重新导入官方原版 Touhou Fumo Racing 0.2.1。\n"
+                    + "若仍无法启动，请保留日志并反馈。";
+                Debug.LogError("FUMO_CONTENT_INSTALL_REQUIRED " + exception);
             }
         }
         void OnGUI()
         {
             if (error == null) return;
-            GUI.Box(new Rect(20, 20, Mathf.Max(300, Screen.width - 40), 220), "Touhou Fumo Racing — Content required");
+            GUI.Box(new Rect(20, 20, Mathf.Max(300, Screen.width - 40), 220), "Touhou Fumo Racing — 需要导入游戏内容");
             GUI.Label(new Rect(40, 65, Mathf.Max(260, Screen.width - 80), 150), error);
         }
     }

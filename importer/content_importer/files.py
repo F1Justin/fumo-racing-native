@@ -14,7 +14,14 @@ MAX_FILES = 50000
 
 
 class ImportFailure(Exception):
-    pass
+    def __init__(self, diagnostic, public_message=None):
+        super().__init__(diagnostic)
+        self.public_message = public_message or diagnostic
+
+
+class InvalidPackage(ImportFailure):
+    def __init__(self, diagnostic, public_message=None):
+        super().__init__(diagnostic, public_message or "安装包校验失败。请重新下载最新发行包后重试；若仍失败，请保留日志并反馈。")
 
 
 def sha256(path: Path) -> str:
@@ -139,16 +146,21 @@ def snapshot_original(data: Path, destination: Path, required: list[dict], progr
         if name.casefold() in seen:
             raise ImportFailure("原包清单中有重复的路径。")
         seen.add(name.casefold())
-        path = checked_file(data, name)
+        try:
+            path = checked_file(data, name)
+        except ImportFailure as exc:
+            raise ImportFailure(str(exc), "原版游戏文件不完整。请重新下载完整的 0.2.1 ZIP 后导入。") from exc
         if path.stat().st_size != row["bytes"]:
-            raise ImportFailure("原版文件不匹配或不完整：" + name)
+            raise ImportFailure("Original size mismatch: " + name,
+                                "原版游戏版本不匹配或文件不完整。请使用完整的 0.2.1 ZIP。")
         target = destination / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
         actual = sha256(target)
         accepted = row.get("sha256s", [row.get("sha256")])
         if actual not in accepted:
-            raise ImportFailure("这个原版文件暂不受支持，请使用官方 0.2.1：" + name)
+            raise ImportFailure("Original hash mismatch: " + name,
+                                "原版游戏文件与支持的版本不一致。请使用未经修改的官方 0.2.1 ZIP。")
         identities[name] = actual
         completed += row["bytes"]
         progress("validate", completed, total, "正在校验原版游戏…")

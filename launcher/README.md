@@ -1,62 +1,65 @@
-# 原版资源导入与启动工具
+# 导入原版游戏
 
-此目录是独立首装启动器，不依赖更新器模块，不修改游戏和 updater，也不包含原作图片、字体、音乐、图标或游戏数据。
+启动工具用于导入 Touhou Fumo Racing 0.2.1，并启动安装好的游戏。玩家下载对应系统的发行包，打开工具，选择原版 ZIP 或已解压文件夹；导入完成后点击“开始游戏”。以后打开工具可直接启动上次安装。
 
-运行端为 Go 单文件程序，macOS 外加 AppKit 原生窗口，Windows/Linux 当前打开本机浏览器界面。Windows 的文件选择使用系统 PowerShell/WinForms；Linux 优先使用 zenity 或 kdialog，无选择器时提供路径输入。最终发布还需为每个平台附上冻结的 `content-importer`，玩家不安装 Python。
+macOS 使用原生窗口，Windows 和 Linux 使用本机浏览器界面。文件选择使用系统对话框；Linux 没有 zenity 或 kdialog 时，可在“高级选项”填写路径。玩家所需的导入程序随发行包提供。
+
+默认安装位置：
+
+| 系统 | 位置 |
+|---|---|
+| macOS | `~/Library/Application Support/Fumo Racing/Installations/current` |
+| Windows | `%LOCALAPPDATA%/Fumo Racing/Installations/current` |
+| Linux | `$XDG_DATA_HOME/Fumo Racing/Installations/current`，默认 `~/.local/share` |
 
 ## 构建
 
-开发构建需要 Go、Python 3；macOS 壳还需要 Xcode command-line tools。源码只用 Go 标准库。
+维护者需要 Go 和 Python 3；构建 macOS 窗口还需要 Xcode command-line tools。
 
 ```sh
 python3 build.py --target all
-# 将经过审核的导入器和配方附入单个平台；不上传、不创建 Release：
-python3 build.py --target macos-arm64 --importer /absolute/content-importer --recipe /absolute/recipe.json
+python3 build.py --target macos-arm64 --importer /absolute/content-importer --recipe-dir /absolute/ready-installation
 ```
 
-默认输出 `dist/<target>`。未提供导入器与配方时仅构建窗口骨架，不能安装游戏。macOS 分 arm64、amd64 两个包，使用本地 ad-hoc 签名，尚未 Developer ID 签名或公证。Windows 尚未 Authenticode 签名。receipt 中 `publicDistributionAccepted`、`realGameTested` 默认均为 false。
+输出在 `dist/<target>`。第一条命令构建各平台启动界面，第二条命令附入单个平台的导入器和完整安装内容。导入器旁须有 `importer-build-receipt.json` 和 `THIRD-PARTY-LICENSES/`；脚本核对平台、架构、文件哈希和许可证清单。安装目录须经 `publish/assemble_recipe.py finalize` 完成验收，目录内文件必须与清单完全一致。
 
-macOS 最低系统声明从生成的 Go engine 的 Mach-O deployment target 读取，再用于 AppKit host 和 Info.plist；当前本机 Go 1.27.1 输出要求 macOS 13.0。最终导入器和游戏的要求也应纳入发行支持矩阵。
+macOS 最低版本取 Go 引擎与导入器所有嵌入依赖的最高要求，写入 Info.plist。当前组合要求 macOS 13.0。本地构建采用 ad-hoc 签名；正式分发还需完成 Developer ID 签名、公证及最低系统实机测试。Windows 代码签名也在发行验收范围内。
 
-普通平台布局：`Fumo-Racing-Launcher[.exe]`、`content-importer[.exe]`、`recipe.json` 相邻。macOS 的 engine 与 content-importer 在 `.app/Contents/MacOS`；recipe.json 在 `.app/Contents/Resources`。配方引用的其它已审核文件由发行打包层按导入器约定提供；此构建脚本不自行收集任何游戏目录。
+## 维护者接口
 
-## 导入器协议
-
-启动器只执行包内固定导入器，不通过 shell，UI 不允许修改导入器、配方或命令参数。开发测试可用 `--bundle-dir` 指定夹具目录；不要在玩家说明中使用它。
+启动器执行发行包内固定的程序和数据目录：
 
 ```text
-content-importer --source PATH --output PATH --json-progress --recipe FIXED_RECIPE_DIRECTORY
+content-importer --source PATH --output PATH --json-progress --recipe FIXED_DIRECTORY
 ```
 
-导入器 stdout 逐行输出 UTF-8 JSON，单行上限 64 KiB：
+普通平台把启动器、`content-importer[.exe]`、`recipe.json` 放在同一目录。macOS 的可执行文件位于 `.app/Contents/MacOS`，`recipe.json` 及其引用的文件位于 `.app/Contents/Resources`。`--recipe` 接受包含该 JSON 文件的目录。
+
+导入器通过 stdout 输出 UTF-8 JSONL，单行上限 64 KiB：
 
 ```json
 {"type":"progress","phase":"checking","completed":1,"total":5,"message":"正在检查原版游戏…"}
 {"type":"result","installation":"/absolute/output","executable":"/absolute/output/Game.app/Contents/MacOS/Game","arguments":[]}
 ```
 
-进度 total 缺省或小于等于 0 时为不确定进度。错误可输出 `{"type":"error","message":"友好错误原因"}`，并以非零状态退出。stderr 最多保留末尾 8 KiB。只有退出码为 0、恰有一个 result、文件与路径通过校验时才记住安装。不得在 stdout 混入普通日志。
+错误使用 `type:error` 和中文 `message`，并以非零状态退出。进度没有有效 total 时显示不确定进度。启动器要求退出码为 0、唯一 result、有效的安装记录及可执行文件，随后保存安装位置。
 
-`--recipe` 传入包含 `recipe.json` 的目录；启动器预先检查固定 JSON 文件，再把其父目录传给导入器。发行配方引用的文件也必须按配方相对路径放在该目录下。
+所有结果路径经符号链接解析后检查：installation 必须位于 output 内，executable 和 `Content/install-manifest.json` 必须位于安装内。参数仅允许空数组，或固定的 `-fumo-content-dir` 与 Content 路径。启动时设置 `FUMO_CONTENT_PATH`。导入器负责内容哈希验证；启动器检查安装文件是否仍在原位置。
 
-结果的 installation 必须在 output 内，executable 必须在 installation 内。路径必须为绝对路径，经符号链接解析后再次检查；文件必须真实存在且在 Unix 有执行位。还要求安装内有 `Content/install-manifest.json`。`arguments` 仅允许空数组或 `['-fumo-content-dir', '<canonical installation>/Content']`；其它参数拒绝。
+本机接口监听 `127.0.0.1` 动态端口，使用随机会话 token 并校验 Host、Origin 和 `X-Fumo-Token`。界面资源全部嵌入程序。
 
-启动器设置 `FUMO_CONTENT_PATH=<installation>/Content`，并过滤父进程同名变量。内容 manifest 的 schema、各 bundle 哈希及内容完整性由导入器负责验证；启动器当前只检查安装记录文件存在，不把存在性视为哈希验证。
+| 接口 | 用途 |
+|---|---|
+| `GET /api/state` | 读取进度、状态及启动条件 |
+| `POST /api/select` | 选择 ZIP、原版文件夹或安装位置 |
+| `POST /api/install` | 传入 `sourcePath` 和可选 `outputPath`，开始导入 |
+| `POST /api/launch` | 启动已安装游戏 |
+| `POST /api/quit` | 安装空闲时退出工具 |
 
-默认安装：macOS `~/Library/Application Support/Fumo Racing/Installations/current`；Windows `%LOCALAPPDATA%/Fumo Racing/Installations/current`；Linux `$XDG_DATA_HOME/Fumo Racing/Installations/current`（缺省 `~/.local/share`）。安装记录保存在同一级数据根下的 `Fumo Racing Launcher/installation.json`，与游戏和原包分离。
-
-## 本机接口与验证
-
-只监听 `127.0.0.1` 动态端口；每次随机生成会话 token，并校验 Host、Origin 和 `X-Fumo-Token`。所有界面内容嵌入程序，不引用远程字体、脚本或图像。接口不接受 recipe/importer/额外命令参数。
-
-- `GET /api/state`：phase、busy、progress、indeterminate、message、error、outputPath、installation、canLaunch。
-- `POST /api/select`：`{"kind":"sourceZip|sourceDirectory|outputDirectory"}`，取消返回空路径。
-- `POST /api/install`：`{"sourcePath":"...","outputPath":"..."}`；outputPath 可省略。
-- `POST /api/launch`：启动已验证的安装。
-- `POST /api/quit`：非安装状态下退出浏览器模式后台进程。
+## 验证范围
 
 ```sh
-GOCACHE=/tmp/fumo-launcher-go-cache go test -race ./...
+go test -race ./...
 ```
 
-进程测试使用模拟导入器，不包含原作资源、不会生成真实游戏，不等于真实游戏安装或平台实机验收。正式发布还须进行冻结导入器、实际原包、最终游戏与下载后的首次启动验收。
+自动测试覆盖进度、失败处理、安装记录、路径边界和启动参数；macOS 原生窗口已用模拟导入器验证选择、进度和启动流程，独立导入器也已通过真实进程调用的错误处理测试。完整原包导入、游戏运行和下载后的首次启动仍由发行验收完成。

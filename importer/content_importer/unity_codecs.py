@@ -149,7 +149,9 @@ def prepare_conversion(source: Any, target: Any, *, texture_policy: str = "prese
                 out["m_KeepVertices"] = out["m_KeepIndices"] = True
         converted.stream_kind, converted.stream_data = "mesh", payload
         evidence.update(vertex_count=out["m_VertexData"]["m_VertexCount"],
-                        index_bytes=len(out["m_IndexBuffer"]), submeshes=len(out["m_SubMeshes"]))
+                        index_bytes=len(out["m_IndexBuffer"]), submeshes=len(out["m_SubMeshes"]),
+                        packed_vertex_components=out.get("m_CompressedMesh", {}).get("m_Vertices", {}).get("m_NumItems", 0),
+                        packed_index_count=out.get("m_CompressedMesh", {}).get("m_Triangles", {}).get("m_NumItems", 0))
     evidence.update(stream_bytes=len(converted.stream_data),
                     stream_sha256=hashlib.sha256(converted.stream_data).hexdigest())
     return converted

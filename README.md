@@ -1,14 +1,14 @@
 # Fumo Racing Native
 
-A native edition of Touhou Fumo Racing with a local importer for the player's original HonkyHood game package.
+A native edition of Touhou Fumo Racing with an importer for your own Touhou Fumo Racing 0.2.1 ZIP or extracted game folder.
 
-The distribution contains the launcher, native runtime and reconstruction recipes. Original game resources are read from the player's own copy and assembled locally. The importer does not execute the original Windows game or upload its contents.
+Open the launcher, choose the original game, and import it once. When installation finishes, select **开始游戏**. The launcher remembers the installation for future play.
 
 ## Status
 
-Implementation and full-game validation are in progress. A playable release will appear under GitHub Releases after original-package import passes end-to-end validation. Source archives are development tools, not player downloads.
+The public repository currently provides development source. Player installers will appear under [GitHub Releases](https://github.com/F1Justin/fumo-racing-native/releases) after full import and game testing.
 
-The intended player flow is: download the release for your system → open the launcher → select the official original ZIP or installed game folder → import once → play. The supported source version is Touhou Fumo Racing 0.2.1. Obtain it from [HonkyHood's official page](https://honkyhood.itch.io/touhou-fumo-racing).
+Obtain Touhou Fumo Racing 0.2.1 from [HonkyHood's official page](https://honkyhood.itch.io/touhou-fumo-racing). The installer includes the native runtime and reads game resources from your original copy on your computer.
 
 ## Components
 
@@ -29,5 +29,7 @@ cd launcher && go test -race ./...
 PYTHONPATH=importer python3 -m unittest discover -s importer/tests -v
 python3 -m unittest discover -s publish/tests -v
 ```
+
+Checks cover installation state, failure recovery, input paths, content generation and source export. Full-game import and platform installation are tracked separately in release acceptance.
 
 See [third-party notices](publish/THIRD-PARTY-NOTICES.md) and the [source license notice](publish/SOURCE-LICENSE-NOTICE.txt). This community project is not an official HonkyHood release.

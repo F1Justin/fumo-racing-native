@@ -13,6 +13,7 @@ import (
 	"runtime"
 	"strings"
 	"sync"
+	"time"
 )
 
 type Config struct {
@@ -70,7 +71,7 @@ func New(config Config) (*App, error) {
 	if err := os.MkdirAll(config.StateDirectory, 0700); err != nil {
 		return nil, err
 	}
-	app := &App{config: config, view: View{Phase: "welcome", Message: "请选择你已拥有的原版游戏压缩包或文件夹。", OutputPath: config.DefaultOutput}}
+	app := &App{config: config, view: View{Phase: "welcome", Message: "请选择原版 ZIP 或已解压的游戏文件夹。", OutputPath: config.DefaultOutput}}
 	data, err := os.ReadFile(app.statePath())
 	if err == nil {
 		var saved installation
@@ -79,7 +80,7 @@ func New(config Config) (*App, error) {
 				app.installed = normalized
 				app.view.Installation = normalized.Installation
 				app.view.OutputPath = normalized.Output
-				app.view.CanLaunch, app.view.Phase, app.view.Message = true, "ready", "游戏已准备好。"
+				app.view.CanLaunch, app.view.Phase, app.view.Message = true, "ready", "点击“开始游戏”即可启动。"
 			} else {
 				app.view.Message = "原安装位置已失效，请重新导入原版游戏。"
 			}
@@ -131,7 +132,8 @@ func (a *App) Install(source, output string) error {
 		return errors.New("安装位置不能与原版文件夹重叠，请选择其他位置")
 	}
 	if err = os.MkdirAll(filepath.Dir(output), 0700); err != nil {
-		return fmt.Errorf("无法创建安装位置：%w", err)
+		a.saveDiagnostic("create-installation-directory", err, "")
+		return errors.New("无法写入安装位置，请选择有写入权限的文件夹")
 	}
 	ctx, cancel := context.WithCancel(context.Background())
 	a.cancel = cancel
@@ -149,11 +151,13 @@ func (a *App) runImport(ctx context.Context, source, output string) {
 	command.Stderr = &stderr
 	stdout, err := command.StdoutPipe()
 	if err != nil {
-		a.fail("无法准备安装：" + err.Error())
+		a.saveDiagnostic("prepare-importer", err, "")
+		a.fail("无法开始导入，请重新打开启动工具后重试。")
 		return
 	}
 	if err = command.Start(); err != nil {
-		a.fail("无法启动安装工具：" + err.Error())
+		a.saveDiagnostic("start-importer", err, "")
+		a.fail("无法启动导入程序，请重新下载并完整解压对应系统的安装包。")
 		return
 	}
 	scanner := bufio.NewScanner(stdout)
@@ -210,16 +214,15 @@ func (a *App) runImport(ctx context.Context, source, output string) {
 		return
 	}
 	if protocolError != nil {
-		a.fail(protocolError.Error())
+		a.saveDiagnostic("read-importer-progress", protocolError, stderr.String())
+		a.fail("导入遇到问题，请重新打开启动工具后重试。")
 		return
 	}
 	if err != nil || importerFailed {
+		a.saveDiagnostic("import", err, stderr.String())
 		message := importerMessage
 		if message == "" {
-			message = strings.TrimSpace(stderr.String())
-		}
-		if message == "" {
-			message = "安装未完成，请确认原版游戏完整且安装位置有足够空间。"
+			message = "导入未完成，请重新打开启动工具后重试。"
 		}
 		a.fail(truncate(message, 1500))
 		return
@@ -238,7 +241,8 @@ func (a *App) runImport(ctx context.Context, source, output string) {
 		err = writeAtomic(a.statePath(), append(data, '\n'))
 	}
 	if err != nil {
-		a.fail("游戏已生成，但无法保存安装记录：" + err.Error())
+		a.saveDiagnostic("save-installation", err, "")
+		a.fail("无法保存安装位置，请确认当前用户的数据文件夹可写后重试。")
 		return
 	}
 	a.mu.Lock()
@@ -247,6 +251,13 @@ func (a *App) runImport(ctx context.Context, source, output string) {
 	a.view.Installation, a.view.Phase, a.view.Message, a.view.Progress = verified.Installation, "ready", "安装完成，可以开始游戏。", 1
 	a.cancel = nil
 	a.mu.Unlock()
+}
+
+// Technical output stays in a bounded local log; the window receives actions
+// the player can take. Atomic replacement also avoids partial diagnostics.
+func (a *App) saveDiagnostic(action string, err error, stderr string) {
+	data := fmt.Sprintf("time: %s\naction: %s\nerror: %v\nstderr:\n%s\n", time.Now().UTC().Format(time.RFC3339), action, err, stderr)
+	_ = writeAtomic(filepath.Join(a.config.StateDirectory, "last-error.log"), []byte(data))
 }
 
 func (a *App) fail(message string) {
@@ -300,7 +311,8 @@ func (a *App) Launch() error {
 	}
 	command.Env = append(command.Env, "FUMO_CONTENT_PATH="+filepath.Join(verified.Installation, "Content"))
 	if err = command.Start(); err != nil {
-		return fmt.Errorf("无法启动游戏：%w", err)
+		a.saveDiagnostic("start-game", err, "")
+		return errors.New("无法启动游戏，请重新打开启动工具；仍无法启动时，请重新导入原版游戏")
 	}
 	go command.Wait()
 	a.mu.Lock()

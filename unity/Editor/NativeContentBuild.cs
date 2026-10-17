@@ -62,7 +62,7 @@ public static class NativeContentBuild
         public int schema = 1;
         public string role, engineVersion, platform, player, result, contentManifestSHA256;
         public bool publicDistributionAccepted, originalPackageImportVerified, sourceProvenanceReviewed;
-        public int resources, scenes, bundles, batchFlagsCleared, uncompressedTextures;
+        public int resources, scenes, bundles, batchFlagsCleared, uncompressedTextures, readableMeshes;
         public string[] publicPlayerAssetPaths, packedAssetPaths;
         public ResourceMove[] movedResources;
     }
@@ -123,6 +123,25 @@ public static class NativeContentBuild
             EditorSceneManager.SaveScene(scene);
         }
         PlayerSettings.bakeCollisionMeshes = false;
+        int readableMeshes = 0;
+        foreach (string path in AssetDatabase.FindAssets("t:Mesh", new[] { "Assets" }).Select(AssetDatabase.GUIDToAssetPath).Distinct())
+        {
+            var model = AssetImporter.GetAtPath(path) as ModelImporter;
+            if (model && !model.isReadable) { model.isReadable = true; model.SaveAndReimport(); }
+            foreach (var mesh in AssetDatabase.LoadAllAssetsAtPath(path).OfType<Mesh>())
+            {
+                var serialized = new SerializedObject(mesh);
+                var readable = serialized.FindProperty("m_IsReadable");
+                if (readable == null) throw new InvalidOperationException("Cannot retain mesh CPU data: " + path);
+                if (!readable.boolValue) readableMeshes++;
+                readable.boolValue = true;
+                foreach (string field in new[] { "m_KeepVertices", "m_KeepIndices" })
+                {
+                    var value = serialized.FindProperty(field); if (value != null) value.boolValue = true;
+                }
+                serialized.ApplyModifiedPropertiesWithoutUndo(); EditorUtility.SetDirty(mesh);
+            }
+        }
         int textures = 0;
         foreach (string guid in AssetDatabase.FindAssets("t:Texture2D", new[] { "Assets" }))
         {
@@ -173,7 +192,7 @@ public static class NativeContentBuild
         Write(Path.Combine(content, "install-manifest.json"), manifest);
         Write(Path.Combine(Output, "private-reference", "build-receipt.json"), new BuildReceipt { role = "private-reference-content",
             engineVersion = Application.unityVersion, platform = Platform, result = "passed", resources = catalog.resources.Length,
-            scenes = ScenePaths.Length, bundles = names.Length, batchFlagsCleared = cleared, uncompressedTextures = textures,
+            scenes = ScenePaths.Length, bundles = names.Length, batchFlagsCleared = cleared, uncompressedTextures = textures, readableMeshes = readableMeshes,
             movedResources = moves.ToArray(), contentManifestSHA256 = Hash(Path.Combine(content, "install-manifest.json")) });
         Debug.Log("FUMO_PRIVATE_CONTENT_BUILD_PASSED " + content);
     }
@@ -234,8 +253,14 @@ public static class NativeContentBuild
         // A fresh TMP configuration has no imported font, atlas, sprite or original settings reference.
         var tmpSettings = ScriptableObject.CreateInstance<TMPro.TMP_Settings>();
         AssetDatabase.CreateAsset(tmpSettings, "Assets/FumoBootstrap/Resources/TMP Settings.asset");
+        // Bundle materials can reference the engine's builtin shader IDs. An
+        // empty bootstrap scene would otherwise strip UI/Default, producing
+        // magenta menus even though bundle and resource loading succeeds.
+        var builtinNames = new[] { "Legacy Shaders/Diffuse", "Hidden/Internal-DepthNormalsTexture",
+            "Hidden/Internal-MotionVectors", "Hidden/Internal-ScreenSpaceShadows", "Sprites/Default",
+            "UI/Default", "UI/DefaultETC1", "Standard", "Particles/Standard Unlit" };
         var shaders = AssetDatabase.FindAssets("t:Shader", new[] { "Assets" }).Select(AssetDatabase.GUIDToAssetPath)
-            .Select(AssetDatabase.LoadAssetAtPath<Shader>).Where(s => s).Distinct().ToArray();
+            .Select(AssetDatabase.LoadAssetAtPath<Shader>).Concat(builtinNames.Select(Shader.Find)).Where(s => s).Distinct().ToArray();
         var graphics = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/GraphicsSettings.asset")[0]);
         var included = graphics.FindProperty("m_AlwaysIncludedShaders"); included.arraySize = shaders.Length;
         for (int i = 0; i < shaders.Length; i++) included.GetArrayElementAtIndex(i).objectReferenceValue = shaders[i];

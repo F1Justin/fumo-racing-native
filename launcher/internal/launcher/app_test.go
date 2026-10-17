@@ -147,6 +147,22 @@ func TestOverlappingSourceRejected(t *testing.T) {
 	}
 }
 
+func TestImporterDiagnosticsStayInLocalLog(t *testing.T) {
+	app, config := mockApp(t, "stderr-failure")
+	if err := app.Install(t.TempDir(), ""); err != nil {
+		t.Fatal(err)
+	}
+	waitIdle(t, app)
+	view := app.Snapshot()
+	if view.Error == "" || strings.Contains(view.Error, "Traceback") || strings.Contains(view.Error, "INTERNAL_RECIPE") {
+		t.Fatalf("technical diagnostics leaked into the window: %q", view.Error)
+	}
+	log, err := os.ReadFile(filepath.Join(config.StateDirectory, "last-error.log"))
+	if err != nil || !strings.Contains(string(log), "INTERNAL_RECIPE") {
+		t.Fatalf("missing diagnostic log: %v", err)
+	}
+}
+
 func mockApp(t *testing.T, mode string) (*App, Config) {
 	t.Helper()
 	if runtime.GOOS == "windows" {
@@ -163,6 +179,8 @@ import argparse,json,os,pathlib,sys
 p=argparse.ArgumentParser();p.add_argument('--source');p.add_argument('--output');p.add_argument('--recipe');p.add_argument('--json-progress',action='store_true');a=p.parse_args()
 assert (pathlib.Path(a.recipe)/'recipe.json').is_file()
 mode=os.environ.get('FUMO_LAUNCHER_MOCK_MODE')
+if mode=='stderr-failure':
+ print('Traceback: INTERNAL_RECIPE diagnostic',file=sys.stderr);sys.exit(31)
 if mode=='malformed':
  print('not-json',flush=True);sys.exit(0)
 print(json.dumps({'type':'progress','phase':'verifying','completed':1,'total':2,'message':'模拟安装测试'}),flush=True)

@@ -6,7 +6,7 @@ from collections import OrderedDict
 from copy import deepcopy
 from pathlib import Path
 
-from .files import ImportFailure, checked_file
+from .files import InvalidPackage as ImportFailure, checked_file
 
 
 class OriginalStore:

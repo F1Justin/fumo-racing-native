@@ -54,8 +54,22 @@ def collect(output: Path, roots):
     license_path = next((path for path in python_licenses if path.is_file()), None)
     if license_path:
         shutil.copyfile(license_path, output / "Python-LICENSE.txt")
+    runtime_licenses = []
+    runtime_directory = Path(sys.base_prefix)/"licenses"
+    if runtime_directory.is_dir():
+        for original in sorted(runtime_directory.glob("*.txt")):
+            if original.is_symlink() or not original.is_file() or original.stat().st_size > 2*1024**2:
+                raise ValueError("Unexpected Python runtime license file")
+            target = output/"Python-runtime"/original.name
+            target.parent.mkdir(exist_ok=True)
+            shutil.copyfile(original, target)
+            runtime_licenses.append({"file": target.relative_to(output).as_posix(),
+                                     "sha256": hashlib.sha256(target.read_bytes()).hexdigest()})
+    provenance = Path(sys.base_prefix)/"python-runtime-provenance.json"
+    runtime_source = json.loads(provenance.read_text()) if provenance.is_file() else None
     report = {"schemaVersion": 1, "pythonVersion": sys.version.split()[0], "pythonLicenseCopied": bool(license_path),
               "rootPackages": list(roots), "packages": [found[key] for key in sorted(found)],
+              "pythonRuntimeLicenseFiles": runtime_licenses, "pythonRuntimeSource": runtime_source,
               "publicDistributionAccepted": False,
               "scope": "Installed declared dependency graph; actual frozen-module/binary inventory must also be reviewed."}
     (output / "dependency-inventory.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")

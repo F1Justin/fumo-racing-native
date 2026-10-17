@@ -6,7 +6,7 @@ import platform
 import re
 from pathlib import Path
 
-from .files import ImportFailure, checked_file, relative_name, sha256
+from .files import InvalidPackage as ImportFailure, checked_file, relative_name, sha256
 
 
 def read_json(path: Path, limit: int = 64 * 1024 * 1024):
@@ -33,10 +33,10 @@ class Recipe:
         if not isinstance(self.data, dict) or self.data.get("schema") != 1:
             raise ImportFailure("发行包的资源配方版本不受支持。")
         if self.data.get("status") != "ready" and not allow_draft:
-            raise ImportFailure("这是尚未完成资源重建验证的开发包，不能用于安装。")
+            raise ImportFailure("Recipe status is not ready.", "此下载包尚不支持安装。请从 GitHub Releases 下载可安装版本。")
         expected_platform = {"Darwin": "macos", "Windows": "windows", "Linux": "linux"}.get(platform.system())
         if self.data.get("platform") != expected_platform:
-            raise ImportFailure("请下载适用于当前系统的发行包。")
+            raise ImportFailure("Recipe platform differs from host platform.", "安装包与当前系统不匹配。请下载对应系统的版本。")
         self.files = {}
         rows = self.data.get("files", [])
         if not isinstance(rows, list) or not rows or len(rows) > 50000:
