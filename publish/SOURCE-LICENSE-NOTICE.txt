@@ -1,0 +1,10 @@
+Project source license selection is pending the maintainer's decision.
+
+This export contains newly authored distribution tooling only. It does not
+include or grant a license to the original game's art, audio, models, scenes,
+fonts, compiled game assemblies, original game package, or third-party engine.
+
+Third-party components retain their own licenses and notices. Generated license
+metadata is an inventory, not a statement that every redistribution condition
+has been satisfied. Review the actual frozen binaries and upstream license
+files before approving a public binary release.

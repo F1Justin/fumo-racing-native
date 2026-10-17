@@ -1,0 +1,11 @@
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+.private/
+local/
+*.seed
+*.p12
+*.pfx
+.DS_Store

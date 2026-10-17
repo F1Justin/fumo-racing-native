@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "description": "Only newly authored distribution tooling. No project Git history, Unity project, original data, local outputs, or runtime build is exported.",
+  "patterns": [
+    "README.md",
+    "launcher/README.md", "launcher/go.mod", "launcher/build.py",
+    "launcher/cmd/launcher/*.go", "launcher/internal/launcher/*.go", "launcher/ui/*.go", "launcher/ui/index.html", "launcher/macos/host.m",
+    "importer/content_importer/*.py", "importer/tests/*.py", "importer/requirements.txt", "importer/requirements-build.txt", "importer/requirements-frozen.txt", "importer/build.py", "importer/frozen_entry.py", "importer/README.md",
+    "producer/*.py", "producer/README.md",
+    "unity/README.md", "unity/producer.py", "unity/audit_sources.py", "unity/Editor/NativeContentBuild.cs", "unity/Runtime/NativeContent.cs", "unity/Runtime/NativeContentBootstrap.cs", "unity/Shaders/*.shader",
+    "publish/README.md", "publish/allowlist.json", "publish/*.py", "publish/tests/*.py", "publish/templates/*.yml", "publish/THIRD-PARTY-NOTICES.md", "publish/SOURCE-LICENSE-NOTICE.txt"
+  ]
+}

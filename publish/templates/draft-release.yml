@@ -1,0 +1,55 @@
+# Template only: copied under publish/templates, not automatically activated.
+# After source/provenance review, place in .github/workflows and configure a
+# protected `release-review` environment with required maintainers.
+name: Prepare reviewed draft release
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing reviewed Git tag
+        required: true
+        type: string
+      artifact_run_id:
+        description: Same-repository workflow run containing reviewed-release artifact
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    environment: release-review
+    permissions:
+      actions: read
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5, verified 2026-10-17
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5, verified 2026-10-17
+        with:
+          name: reviewed-release
+          run-id: ${{ inputs.artifact_run_id }}
+          github-token: ${{ github.token }}
+          path: reviewed
+      - name: Verify exact reviewed payload
+        run: python3 publish/audit.py reviewed/payload --mode release --review reviewed/review.json --report reviewed/audit-result.json
+      - name: Create draft with all reviewed assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          python3 - <<'PY'
+          import os,pathlib,re,subprocess
+          tag=os.environ['RELEASE_TAG']
+          if not re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+(?:-[A-Za-z0-9.-]+)?',tag):
+              raise SystemExit('Invalid release tag')
+          assets=sorted(pathlib.Path('reviewed/payload').iterdir())
+          if not assets or any(not path.is_file() for path in assets):
+              raise SystemExit('Payload must contain only final release asset files')
+          subprocess.run(['gh','release','create',tag,'--draft','--prerelease','--verify-tag','--latest=false',
+                          '--notes-file','reviewed/release-notes.md',*[str(path) for path in assets]],check=True)
+          PY
+      # Intentionally no publish step. Attach all assets before publishing an
+      # immutable release; final publication remains a separate reviewed action.
